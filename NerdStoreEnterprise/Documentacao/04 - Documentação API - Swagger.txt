@@ -1,0 +1,32 @@
+instalar o pacote do swagger
+
+install-package Swashbuckle.AspNetCore
+
+realizar a configuração do swagger no startup
+
+			services.AddSwaggerGen(c => {
+				c.SwaggerDoc("v1", new OpenApiInfo() {
+					Title = "Nerdstore Enterprise Identity API",
+					Description = "Esta API faz parte do custo Asp.Net Core Enterprise Application.",
+					Contact = new OpenApiContact() { Name = "Anderson Enterprise", Email = "anderson.silvait@outlook.com.br"},
+					License = new OpenApiLicense() {  Name = "MIT", Url = new Uri("https://opensource.org/licenses/MIT")}
+				});
+			});
+			
+
+			app.UseSwagger();
+			app.UseSwaggerUI(c => { 
+				c.SwaggerEndpoint("/swagger/v1/swagger.json", "v1")
+			});
+
+no momento, como foi selecionado usar o Docker no projeto, configuração está setada para executar no docker.
+
+Para alterar isso, é necessário aterar a configuração no laushSettings.json
+
+para iniciar a aplicação, nesse arquivo é trocado weatherforecast por swagger, iniciará pela documentação
+
+e para iniciar com o IIS express
+
+nas propriedades da aplicação
+
+aba Debug trocar Docker por IIS Express

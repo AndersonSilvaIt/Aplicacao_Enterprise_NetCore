@@ -1,0 +1,19 @@
+Criado os Modelos para trabalhar com o Login
+
+UserViewModels
+
+Criado a controller AuthController
+
+IdentityUser utilizado no identity
+
+injetado por injeção de dependência
+
+		private readonly SignInManager<IdentityUser> _signInManager;
+		private readonly UserManager<IdentityUser> _userManager;
+
+SignInManager = gerencia questões de login
+
+UserManager = gerencia como gerenciar o usuario
+
+não precisa configurar essa dependência no startup, pois é tudo refereniado no Identity
+

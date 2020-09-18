@@ -1,0 +1,46 @@
+Instalação dos pacotes no Projeto
+NSE.Identidade.API
+
+install-package Microsoft.AspNetCore.Authentication.JwtBearer
+
+install-package Microsoft.AspNetCore.Identity.EntityFrameworkCore
+install-package Microsoft.AspNetCore.Identity.UI
+
+install-package Microsoft.EntityFrameworkCore
+install-package Microsoft.EntityFrameworkCore.Abstractions
+install-package Microsoft.EntityFrameworkCore.Relational
+install-package Microsoft.EntityFrameworkCore.SqlServer
+
+
+Setup 
+
+Para adicionar suporte ao padrão MVC no .NetCore 3.1 é através do services.AddControllers
+e não mais no AddMVC.
+
+		public void ConfigureServices(IServiceCollection services)
+		{
+			services.AddControllers();
+		}
+		
+Criado o DBContext para utilizar com o Identity
+ApplicationDbContext
+
+Configuração do Identity
+
+Agora é necessário mapear esse contexto no Startup
+
+			services.AddDefaultIdentity<IdentityUser>()
+				.AddRoles<IdentityRole>()
+				.AddEntityFrameworkStores<ApplicationDbContext>()
+				.AddDefaultTokenProviders();
+				
+para criar a Migration para criar o banco de dados, necessário adicionar um outro pacotes
+
+	*	Install-Package Microsoft.EntityFrameworkCore.Tools
+	
+	Para criar a Migration
+	
+	Add-Migration Initial
+
+Para criar o banco
+Update-Database
