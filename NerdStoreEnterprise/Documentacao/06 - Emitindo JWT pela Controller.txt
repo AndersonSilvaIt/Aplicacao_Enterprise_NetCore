@@ -1,0 +1,2 @@
+na Controller do Identity AuthController é criado o método para emissão do JWT
+

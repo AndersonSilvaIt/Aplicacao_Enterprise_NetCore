@@ -1,0 +1,62 @@
+Refatoração do método GerarJWT do Controller
+
+		public Startup(IHostEnvironment hostEnvironment)
+		{
+			var builder = new ConfigurationBuilder()
+				.SetBasePath(hostEnvironment.ContentRootPath)
+				.AddJsonFile("appsettings.json", true, true)
+				.AddJsonFile($"appsettings{hostEnvironment.EnvironmentName}.json", true, true)
+				.AddEnvironmentVariables();
+
+			if (hostEnvironment.IsDevelopment())
+			{
+				builder.AddUserSecrets<Startup>();
+			}
+
+			Configuration = builder.Build();
+		}
+		
+		croadp a configuração paravários ambientes, Desenvolvedor, produção e etc...
+		
+	se for em modo desenvolvedor, irá usar uma chave secreta que fica somente na máquina do desenvolvedor.se
+	
+	também é necessário alterar o arquivo de launchSettings.json
+	
+	
+para criar vários ambientes, Dev, produção e etc
+
+
+        "IIS - Development": {
+            "commandName": "IISExpress",
+            "launchBrowser": true,
+            "launchUrl": "swagger",
+            "environmentVariables": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            }
+        },
+        "IIS - Staging": {
+            "commandName": "IISExpress",
+            "launchBrowser": true,
+            "launchUrl": "swagger",
+            "environmentVariables": {
+                "ASPNETCORE_ENVIRONMENT": "Staging"
+            }
+        },
+        "IIS - Production": {
+            "commandName": "IISExpress",
+            "launchBrowser": true,
+            "launchUrl": "swagger",
+            "environmentVariables": {
+                "ASPNETCORE_ENVIRONMENT": "Production"
+            }
+        },
+		
+		
+a configuração do Identity precisa estar configurada entre o UseRouting e os EndPoint no Startup, caso contrário, é gerado um erro.
+
+
+			app.UseHttpsRedirection();
+
+			app.UseIdentityConfiguration();
+
+			app.UseRouting();

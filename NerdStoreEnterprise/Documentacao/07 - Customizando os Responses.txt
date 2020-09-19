@@ -1,0 +1,12 @@
+Criado a ControlelerMain para tratar as mensagens  customizadas e erros.
+
+criado tambem a classe de extensão para deixar as mensagens de erro do Identity em portugues
+
+após criar a classe, é necessário configurar no Startup
+
+
+			services.AddDefaultIdentity<IdentityUser>()
+				.AddRoles<IdentityRole>()
+				.AddErrorDescriber<IdentityMensagensPortugues>() // nessa Linha
+				.AddEntityFrameworkStores<ApplicationDbContext>()
+				.AddDefaultTokenProviders();
