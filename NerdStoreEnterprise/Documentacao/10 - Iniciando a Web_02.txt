@@ -1,0 +1,11 @@
+o Projeto web usará a utenticação via Cookie, então é necessário realizr algumas configurações no Startup
+
+Setando o Identity para os Cookies
+
+			services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+				.AddCookie(options =>
+				{
+					options.LoginPath = "/login"; // se não estiver logado, será redirecionado para a rota /login
+					options.AccessDeniedPath = "/acesso-negado"; // se tiver o acesso negado
+				});
+				

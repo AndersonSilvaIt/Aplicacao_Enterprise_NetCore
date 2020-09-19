@@ -1,0 +1,4 @@
+o AspNet mvc não trabalha muito bem com Token, então quando a página web receber o Token, ele será convertido para Cookie.
+
+Criado uma AspNet MVC para teste, onde utilizar o scaffolding para criar as telas Razor Pages do Identity.
+Não será utilizado no projeto esse padrão, será criado as views e Controllers na mão.
