@@ -1,0 +1,25 @@
+Criado o serviço para a comuncação
+
+IAutenticaçãoService
+criado também a classe que implementa essa interface
+para realizar chamadas externas, é usado a biblioteca HttpClient
+
+Código para realizar a injeção de dependência na Startup
+		public static void RegisterServices(this IServiceCollection services)
+		{
+			services.AddHttpClient<IAutenticacaoService, AutenticacaoService>();
+		}
+
+
+na classe de serviço, ao tentar realizar o Deserialize do objeto e passar para uma string, é gerado um erro,
+pois a biblioteca NewTon soft permitia passar um objeto para a string, porém no System.Text implementado no C# não
+não permite, então é preciso criar um objeto especifico do resultado para isso.
+return JsonSerializer.Deserialize<string>(await response.Content.ReadAsStringAsync());
+
+o System.Text também não realiza o descetializar pq o objeto json as propriedades vem como minusculas, e as propriedades do objetos
+iniciam com Letras maiúsculas, para isso é necessário realizar outra configuração.
+
+			var options = new JsonSerializerOptions
+			{
+				PropertyNameCaseInsensitive = true,
+			};
