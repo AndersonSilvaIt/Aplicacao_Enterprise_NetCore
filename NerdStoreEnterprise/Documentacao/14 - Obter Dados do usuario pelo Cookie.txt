@@ -1,0 +1,5 @@
+Implementadoa Interface para obter os dados de usuário,
+
+IUser
+
+necessário tratar a injeção de dependência no Startup
