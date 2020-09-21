@@ -1,0 +1,4 @@
+Criado mais ViewModels que representa a estrutura que está vindo da API
+para Descerealizar
+
+Implementado controller main para validar se tem erros.
