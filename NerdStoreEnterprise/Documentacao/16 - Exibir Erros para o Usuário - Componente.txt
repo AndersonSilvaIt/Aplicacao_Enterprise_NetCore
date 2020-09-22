@@ -1,0 +1,8 @@
+Criado um componente customizado para aparecer os erros para o usuário
+
+SummaryViewComponent,
+criado a classe do component
+criado a View para esse componente
+
+é necessário realizar o Import desse componente no arquivo de _ViewImports
+
