@@ -1,0 +1,11 @@
+Criado o moddleware para tratar os erros do servidor.
+
+Para se criar um middleare é necessário realizar a configuração (Registrar) no WebAppConfig
+
+app.UseMiddleware<ExceptionMiddleware>();
+
+caso houver algum erro na aplicação, será redirecionado para essa página.
+app.UseExceptionHandler("/erro/500");
+
+redireciona para outra rota específica, com o status code por parâmetro
+app.UseStatusCodePagesWithRedirects("/erro/{0}");
