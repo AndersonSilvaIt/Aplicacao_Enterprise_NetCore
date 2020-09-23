@@ -1,0 +1,16 @@
+Criado o arquivo de configuração para obter a URL do EndPoint
+
+AppSetting no projeto Web
+
+realizado ac onfiguração no Startup.
+
+
+esse é um modo de gerar a URI para atingir a API
+var response = await _httpClient.PostAsync("/api/identidade/autenticar", loginContent);
+
+outro jeito é seta no construtor do Controller
+
+httpClient.BaseAddress = new Uri(_settings.AutenticacaoUrl);
+
+então quando for realizar o Post, a URL básica já é setada no _httpClient 
+var response = await _httpClient.PostAsync("/api/identidade/autenticar", loginContent);
