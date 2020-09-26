@@ -1,0 +1,21 @@
+Implementado os métodos de extesnaõ da API de catálogo
+
+			services.AddApiConfiguration(Configuration);
+
+			services.RegisterServices();
+			
+			app.UseApiConfiguartion(env);
+			
+realizado a configuração do Swagger
+necessário instalar o pacote
+
+Swashbuckle.AspNetCore			
+
+realizado aconfiguração do swagger
+
+AddSwaggerConfiguration
+
+UseSwaggerConfiguration
+
+também necessário alterar o arquivo de configuração lauchSettings.json
+
