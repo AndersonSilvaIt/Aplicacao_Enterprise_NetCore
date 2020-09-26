@@ -1,0 +1,48 @@
+Implementado a entidade básica para as APIs
+
+Entity no projeto Core.
+
+Criado a classe de Produto do catálogo
+
+
+instalado as dependências do EntityFramework para trabalhar com banco de dados
+
+Microsoft.EntityFrameworkCore
+Microsoft.EntityFrameworkCore.Abstractions
+Microsoft.EntityFrameworkCore.Relational
+Microsoft.EntityFrameworkCore.SqlServer
+Microsoft.EntityFrameworkCore.Design
+
+
+Criado o contexto para o banco de dados CatalogoContext
+
+Criado a classe para mapeamento de produto no banco
+ProdutoMapping
+
+
+na classe de contexto é passado a configuração para realizar o mapeamento
+		protected override void OnModelCreating(ModelBuilder modelBuilder)
+		{
+			modelBuilder.ApplyConfigurationsFromAssembly(typeof(CatalogoContext).Assembly);
+		}
+		
+		o C# obtém qualquer clase que implementa IEntityTypeConfiguration e faz a configuração
+		
+no appSettings de desenvolvimento, colocado a connection string
+
+			services.AddDbContext<CatalogoContext>(options =>
+				options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+				
+				realizado a configuração do contexto no startup
+				
+Criado a migration da API via package console
+
+Add-Migration Initial
+
+criado o banco de dados
+Update-Database
+
+criado os repositórios para se trabalhar com cadatro de produto
+ProdutoRepository
+
+Obs: o commit do _context, que de fato envia os dados para o banco será tratado de forma diferente.
