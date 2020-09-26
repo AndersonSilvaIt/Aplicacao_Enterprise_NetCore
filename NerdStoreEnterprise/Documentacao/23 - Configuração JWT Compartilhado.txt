@@ -1,0 +1,8 @@
+Criado um projeto novo para setar as configurações do JWT para todas as APIs
+
+NSE.WebAPI.Core
+
+
+necessário instalar o pacote do JWT
+
+Microsoft.AspNetCore.Authentication.JwtBearer

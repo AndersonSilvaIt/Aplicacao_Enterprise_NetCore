@@ -9,14 +9,6 @@ namespace NSE.Identidade.API
 {
 	public class Startup
 	{
-		//Trocado para obter a configuração do Ambiente, ex: Desenvolvedor, produção e etc.
-		/*public Startup(IConfiguration configuration)
-		{
-			Configuration = configuration;
-		}
-
-		public IConfiguration Configuration { get; }*/
-
 		public IConfiguration Configuration { get; }
 		public Startup(IHostEnvironment hostEnvironment)
 		{
