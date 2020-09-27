@@ -1,0 +1,12 @@
+Criado a controller no projeto web para obter os dados da API controller
+
+CatalogoController
+
+criado a interface a classe que implementa essa interface para obter os dados
+
+também necessário configurar a injeção de dependência dessa interface na Startup
+
+injetado essa interface na controller de catalogo
+
+
+necessário mudar o endereço de url da api de catálogo no appsettings e também no arquivo de UserSecrets
