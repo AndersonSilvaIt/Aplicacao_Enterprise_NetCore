@@ -1,0 +1,15 @@
+Implementado na tabela de AspNetUserClaims um registro para o usuário
+
+id usuário : bd06fa04-f26b-4a14-9a50-6a862b1833fb
+ClaimType = Catalogo
+ClaimValue = Ler
+
+
+Criado o atributo para filtrar por Claims
+
+CustomAuthorize
+
+Configuração do SWAGGER
+AddSwaggerConfiguration
+
+Para validação de Tokens na API

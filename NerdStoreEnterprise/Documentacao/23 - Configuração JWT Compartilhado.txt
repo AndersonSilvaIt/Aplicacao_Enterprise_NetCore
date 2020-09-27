@@ -6,3 +6,7 @@ NSE.WebAPI.Core
 necessário instalar o pacote do JWT
 
 Microsoft.AspNetCore.Authentication.JwtBearer
+
+realizado a configuração para se obter o Token em um único ponto no sistema.
+Criado o método de extensão para isso 
+no projeto NSE.WebAPI.Core
