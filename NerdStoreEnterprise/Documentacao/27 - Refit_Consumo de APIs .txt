@@ -1,0 +1,12 @@
+necessário isntalar a biblioteca do Refit
+
+install-package Refit na aplicação MVC
+
+
+criado a interface para realizar a comunicação 
+
+ICatalogoServiceRefit
+
+necessário registrar o Refit no Startup
+
+implementado algumas validações de erro na clase ExceptionMiddleare para tratar os erros do Refit
