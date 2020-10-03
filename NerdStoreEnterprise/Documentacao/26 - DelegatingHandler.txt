@@ -1,0 +1,17 @@
+Classe criada para interceptar uma requisição de HTTP
+
+nesse caso, criado para passar o token no header da requisição para usar na abertura do produto, que utiliza claims
+
+clase precisa herdar de DelegatingHandler
+
+classe criada 
+HttpClientAuthorizationDelegatingHandler
+
+é necessário registrar a configuração no Startup
+
+			services.AddTransient<HttpClientAuthorizationDelegatingHandler>();
+			
+			
+						services.AddHttpClient<ICatalogoService, CatalogoService>()
+				.AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>();
+

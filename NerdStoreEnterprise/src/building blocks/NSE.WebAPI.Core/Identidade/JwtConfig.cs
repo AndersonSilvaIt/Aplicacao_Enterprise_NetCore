@@ -28,7 +28,7 @@ namespace NSE.WebAPI.Core.Identidade
 				bearesOptions.TokenValidationParameters = new TokenValidationParameters
 				{
 					ValidateIssuerSigningKey = true,
-					IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes("x")),
+					IssuerSigningKey = new SymmetricSecurityKey(key),
 					ValidateIssuer = true,
 					ValidateAudience = true,
 					ValidAudience = appSettings.ValidoEm,

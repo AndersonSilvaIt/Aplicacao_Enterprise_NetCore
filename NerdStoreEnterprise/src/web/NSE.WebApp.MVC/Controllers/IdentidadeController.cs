@@ -1,19 +1,20 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 using System.Threading.Tasks;
-using NSE.WebApp.MVC.Models;
-using NSE.WebApp.MVC.Services;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using System.Security.Claims;
-using System.IdentityModel.Tokens.Jwt;
-using System.Collections.Generic;
-using System;
+using Microsoft.AspNetCore.Mvc;
+using NSE.WebApp.MVC.Models;
+using NSE.WebApp.MVC.Services;
 
 namespace NSE.WebApp.MVC.Controllers
 {
 	public class IdentidadeController : MainController
 	{
 		private readonly IAutenticacaoService _autenticacaoService;
+
 		public IdentidadeController(IAutenticacaoService autenticacaoService)
 		{
 			_autenticacaoService = autenticacaoService;
@@ -28,7 +29,7 @@ namespace NSE.WebApp.MVC.Controllers
 
 		[HttpPost]
 		[Route("nova-conta")]
-		public async Task<IActionResult> Resgistro(UsuarioRegistro usuarioRegistro)
+		public async Task<IActionResult> Registro(UsuarioRegistro usuarioRegistro)
 		{
 			if (!ModelState.IsValid) return View(usuarioRegistro);
 
@@ -38,7 +39,7 @@ namespace NSE.WebApp.MVC.Controllers
 
 			await RealizarLogin(resposta);
 
-			return RedirectToAction("Index", "Home");
+			return RedirectToAction("Index", "Catalogo");
 		}
 
 		[HttpGet]
@@ -54,7 +55,6 @@ namespace NSE.WebApp.MVC.Controllers
 		public async Task<IActionResult> Login(UsuarioLogin usuarioLogin, string returnUrl = null)
 		{
 			ViewData["ReturnUrl"] = returnUrl;
-
 			if (!ModelState.IsValid) return View(usuarioLogin);
 
 			var resposta = await _autenticacaoService.Login(usuarioLogin);
@@ -62,7 +62,8 @@ namespace NSE.WebApp.MVC.Controllers
 			if (ResponsePossuiErros(resposta.ResponseResult)) return View(usuarioLogin);
 
 			await RealizarLogin(resposta);
-			if(string.IsNullOrEmpty(returnUrl)) return RedirectToAction("Index", "Home");
+
+			if (string.IsNullOrEmpty(returnUrl)) return RedirectToAction("Index", "Catalogo");
 
 			return LocalRedirect(returnUrl);
 		}
@@ -73,7 +74,7 @@ namespace NSE.WebApp.MVC.Controllers
 		{
 			await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
 
-			return RedirectToAction("Index", "Home");
+			return RedirectToAction("Index", "Catalogo");
 		}
 
 		private async Task RealizarLogin(UsuarioRespostaLogin resposta)
@@ -86,7 +87,7 @@ namespace NSE.WebApp.MVC.Controllers
 
 			var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
 
-			var authProperts = new AuthenticationProperties
+			var authProperties = new AuthenticationProperties
 			{
 				ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(60),
 				IsPersistent = true
@@ -94,13 +95,13 @@ namespace NSE.WebApp.MVC.Controllers
 
 			await HttpContext.SignInAsync(
 				CookieAuthenticationDefaults.AuthenticationScheme,
-				new ClaimsPrincipal(claimsIdentity), authProperts);
+				new ClaimsPrincipal(claimsIdentity),
+				authProperties);
 		}
 
 		private static JwtSecurityToken ObterTokenFormatado(string jwtToken)
 		{
 			return new JwtSecurityTokenHandler().ReadToken(jwtToken) as JwtSecurityToken;
 		}
-
 	}
 }
