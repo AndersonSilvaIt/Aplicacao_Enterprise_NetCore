@@ -1,0 +1,22 @@
+Romper a comunicação após algumas tentativas com falhas.
+(Corta a comunicação).
+ implementado com a biblioteca Polly
+ 
+na startup realizado a configuração
+
+			services.AddHttpClient<ICatalogoService, CatalogoService>()
+				.AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>()
+				//.AddTransientHttpErrorPolicy(
+				//p=> p.WaitAndRetryAsync(3, _ => TimeSpan.FromMilliseconds(600)));// caso ocorrer algum erro, o sistema faz mais 3 tentativa antes de mostrar o erro na tela
+				.AddPolicyHandler(PollyExtensions.TentarEsperar())
+				.AddTransientHttpErrorPolicy(
+				p => p.CircuitBreakerAsync(5, TimeSpan.FromSeconds(30)));
+				
+				
+				
+na classe de tratamento de exceções, é tratado uma nova exceção
+
+			catch(BrokenCircuitException ex)
+			{
+				HandleCircuitBrakerExceptionAsync(httpContext);
+			}
