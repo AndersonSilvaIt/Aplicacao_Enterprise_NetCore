@@ -20,3 +20,5 @@ na classe de tratamento de exceções, é tratado uma nova exceção
 			{
 				HandleCircuitBrakerExceptionAsync(httpContext);
 			}
+			
+			

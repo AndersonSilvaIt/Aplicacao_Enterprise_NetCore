@@ -1,0 +1,11 @@
+implementado formatação de valores decimais
+
+implementação de Cultura, inserido na Startup
+
+			var supportedCultures = new[] { new CultureInfo("pt-BR") };
+			app.UseRequestLocalization(new RequestLocalizationOptions
+			{
+				DefaultRequestCulture = new RequestCulture("pt-BR"),
+				SupportedCultures = supportedCultures,
+				SupportedUICultures = supportedCultures
+			});
