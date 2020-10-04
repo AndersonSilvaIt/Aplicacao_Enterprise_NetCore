@@ -1,22 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using NSE.WebApp.MVC.Extensions;
-using NSE.WebApp.MVC.Services;
-using NSE.WebApp.MVC.Services.Handlers;
-using Polly;
-using Polly.Extensions.Http;
-using System;
+Biblioteca utilizada para quando correr um erro Exception, ele ficar retentando fazer algo de acordo com os parâmetros passados.
 
-namespace NSE.WebApp.MVC.Configuration
-{
-	public static class DependencyInjectionConfig
-	{
-		public static void RegisterServices(this IServiceCollection services, IConfiguration configuration)
-		{
-			services.AddTransient<HttpClientAuthorizationDelegatingHandler>();
+necessário instalar a biblioteca
 
-			services.AddHttpClient<IAutenticacaoService, AutenticacaoService>();
+install-package Microsoft.Extensions.Http.Polly
+
 
 			//Politica do plice, primeira ver caso ocorrer algum erro, irá aguardar 1 segundo para tentar novamente
 			// ´pós espera 4 segundos para tentar novamente e etc. para no final caso ocorrer erro, ai sim mostrar o erro na tela.
@@ -39,16 +26,7 @@ namespace NSE.WebApp.MVC.Configuration
 				//.AddTransientHttpErrorPolicy(
 				//p=> p.WaitAndRetryAsync(3, _ => TimeSpan.FromMilliseconds(600)));// caso ocorrer algum erro, o sistema faz mais 3 tentativa antes de mostrar o erro na tela
 				.AddPolicyHandler(retryWaitPolice);
-
-			//services.AddHttpClient("Refit", options => 
-			//	{
-			//		options.BaseAddress = new Uri(configuration.GetSection("CatalogoUrl").Value);
-			//	})
-			//.AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>()
-			//.AddTypedClient(Refit.RestService.For<ICatalogoServiceRefit>);
-
-			services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-			services.AddScoped<IUser, AspNetUser>();
-		}
-	}
-}
+				
+				
+criado a política para quando houver erros, tentar quantas vezes forem necessárias e realizando alguma ação.
+para testar é necessário rodar a aplicação em SelfHosting
