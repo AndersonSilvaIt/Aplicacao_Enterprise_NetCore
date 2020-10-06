@@ -1,0 +1,8 @@
+criado as entidades de Cliente
+
+Implementado objetos de valor (CPF, Email) e etc.
+Implementado objetos de valor (CPF, Email) e etc.
+
+
+Criado os objetos de valores CPF e email com suas devidas validações.
+
