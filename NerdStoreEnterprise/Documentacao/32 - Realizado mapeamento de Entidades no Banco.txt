@@ -1,0 +1,30 @@
+necessário instalar o EntityFramework
+
+install-package EntityFrameworkCore
+
+
+para setar o SetColumnType no contexto da aplicação, é necessário instalar a biblioteca 
+
+install-package Microsoft.EntityFrameworkCore.Relational
+
+
+		public ClientesContext(DbContextOptions<ClientesContext> options) 
+			: base(options)
+		{
+			ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
+			ChangeTracker.AutoDetectChangesEnabled = false;
+		}
+		
+		cnfiguração para quando existir relacionamentos, ao invés de exluir a entidade, somente setar como nulo
+		
+		foreach (var relationsShip in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys())) relationsShip.DeleteBehavior = DeleteBehavior.ClientSetNull;
+
+proximo passo, criar as migrations para o banco de dados
+
+necessário instalar mais uma biblioteca para criar as migrations
+
+Install-Package Microsoft.EntityFrameworkCore.Design
+
+Add-Migration Clientes
+
+agora para criar o banco, basta rodar o comando  update-database
