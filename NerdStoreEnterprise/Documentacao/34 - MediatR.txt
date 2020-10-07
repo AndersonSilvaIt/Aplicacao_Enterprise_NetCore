@@ -1,0 +1,13 @@
+para utilização do MediatR é necessário instalar a biblioteca.
+
+Install-Package MediatR
+
+para todos os commandos serem interpretados pelo mediatR, é necessário que 
+os mesmos herdem de IRequest
+
+criado as classes de manipulação do MediatR no projeto Core, que será compartilhado em toda a aplicação.
+
+
+Na app que irá implementar o mediatR é necessário instalar um pacote para resolver as depdnências, mas não a biblioteca do mediatr em si
+
+Install-Package MediatR.Extensions.Microsoft.DependencyInjection
