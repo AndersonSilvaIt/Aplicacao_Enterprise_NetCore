@@ -1,0 +1,26 @@
+Commands é o conceito de quando se tem a intensão de alterar uma entidade ou inserir 
+Inserção e Update
+
+
+criado o comando para registrar um Cliente,
+Obs: esse command precisa ter os mesmos dados do construtor da classe Cliente
+
+		public Guid Id { get; private set; }
+		public string Nome { get; private set; }
+		public string Email { get; private set; }
+		public string Cpf { get; private set; }
+		
+        public Cliente(Guid id, string nome, string email, string cpf)
+        {
+            Id = id;
+            Nome = nome;
+            Email = new Email(email);
+            Cpf = new CPF(cpf);
+            Excluido = false;
+        }		
+
+Implementado o FluentValidation para validações
+
+install-package FluentValidation
+
+criado o command para registrar cliente. 
