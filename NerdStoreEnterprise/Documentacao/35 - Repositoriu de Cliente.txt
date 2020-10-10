@@ -1,0 +1,4 @@
+Criado o repositório de Cliente.
+
+no repositório em nenhum momento é realizado o SaveChanges,
+isso pq está sendo usado o UnitOfWork, classe responsável por fazer o SaveChanges.
