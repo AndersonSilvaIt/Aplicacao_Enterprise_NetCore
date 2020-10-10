@@ -1,0 +1,3 @@
+Implementado as validações de Comandos de Cliente antes de salvar no banco;
+
+Utilizado o FLuent Validation

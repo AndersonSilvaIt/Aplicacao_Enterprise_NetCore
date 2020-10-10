@@ -19,4 +19,7 @@ namespace NSE.Core.Messages
 			throw new NotImplementedException();
 		}
 	}
+
+
+
 }
