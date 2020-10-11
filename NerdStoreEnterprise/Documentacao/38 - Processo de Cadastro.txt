@@ -1,0 +1,4 @@
+Refatorado o código para todas as Controllers herdarem de MainController
+
+a MainController foi trocado de Lugar, fazendo parte agora do projeto Core NSE.WebAPI.Core
+

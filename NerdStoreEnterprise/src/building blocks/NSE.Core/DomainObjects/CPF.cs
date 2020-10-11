@@ -49,13 +49,13 @@ namespace NSE.Core.DomainObjects
 
 			var resultado = soma % 11;
 
-			if(resultado == 1 || resultado == 0)
-			{
-				if (numeros[10] != 0)
-					return false;
-			}
-			else if(numeros[10] != 11 - resultado)
-				return false;
+			//if(resultado == 1 || resultado == 0)
+			//{
+			//	if (numeros[10] != 0)
+			//		return false;
+			//}
+			//else if(numeros[10] != 11 - resultado)
+			//	return false;
 
 			return true;
 		}

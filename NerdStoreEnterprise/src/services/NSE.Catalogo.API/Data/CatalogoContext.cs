@@ -1,8 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Linq;
 using NSE.Catalogo.API.Models;
 using NSE.Core.Data;
-using System.Linq;
 using System.Threading.Tasks;
+using FluentValidation.Results;
+using NSE.Core.Messages;
+
 
 namespace NSE.Catalogo.API.Data
 {
@@ -15,6 +18,9 @@ namespace NSE.Catalogo.API.Data
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
+			modelBuilder.Ignore<ValidationResult>();
+			modelBuilder.Ignore<Event>();
+
 			foreach (var property in modelBuilder.Model.GetEntityTypes().SelectMany(
 					e => e.GetProperties().Where(p => p.ClrType == typeof(string))))
 			{
@@ -29,5 +35,8 @@ namespace NSE.Catalogo.API.Data
 		{
 			return await base.SaveChangesAsync() > 0;
 		}
+
+
+
 	}
 }

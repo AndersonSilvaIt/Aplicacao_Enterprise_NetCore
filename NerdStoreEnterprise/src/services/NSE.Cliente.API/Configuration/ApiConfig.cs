@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using NSE.Clientes.API.Data;
 using Microsoft.AspNetCore.Builder;
+using NSE.WebAPI.Core.Identidade;
 
 namespace NSE.Clientes.API.Configuration
 {
@@ -39,7 +40,8 @@ namespace NSE.Clientes.API.Configuration
 			app.UseHttpsRedirection();
 			app.UseRouting();
 			app.UseCors("Total");
-			app.UseAuthentication();
+			//app.UseAuthentication();
+			app.UseAuthConfiguration();
 
 			app.UseEndpoints(endpoints =>
 			{
