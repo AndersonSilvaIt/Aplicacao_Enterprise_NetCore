@@ -1,0 +1,10 @@
+Commands significa quando se tem a intenção de alterar uma entidade, seja inserir
+dados no banco ou alterar.
+
+Eventos é algo que já aconteceu, é criado uma fila de eventos para serem tratados.
+
+realizado a publicação do evento, necessário alterar o arquivo de contexto, para quando for sucesso 
+a inserção no banco, ai sim realiza as notificações dos eventos..
+
+
+criado uma classe de extensão para o mediatR
