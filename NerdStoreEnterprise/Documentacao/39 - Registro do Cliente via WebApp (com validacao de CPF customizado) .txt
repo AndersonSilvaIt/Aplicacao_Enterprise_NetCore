@@ -1,0 +1,17 @@
+realizado a comunicação da WebApp com a API de cliente para realizar o registro no banco.
+
+Criaro um data annotation customizado par avalidaçãode CPF.
+
+CpfAttribute
+
+
+implementado também uma validação para tratar diretamente no front End, será um complemento html
+CpfAttributeAdapter
+
+Necessário configurar a injeção de dependência desse adapter no startup
+
+para apresentar esse erro na parte de mensagens da Aplicação, no arquivo de Summary, é necessário trocar o 
+
+de ModelOnly para "All"
+
+asp-validation-summary="All"
