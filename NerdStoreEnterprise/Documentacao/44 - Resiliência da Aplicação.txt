@@ -1,0 +1,17 @@
+Caso o servidor de fila cair, ele não é reestardado automaticamente, preojudicando a aplicação.
+É necessário implementar código para tratar isso.
+
+incluído o AdvancedBus na classe MessaBus.cs
+
+
+        private void OnDisconnect(object s, EventArgs e)
+        {
+            var policy = Policy.Handle<EasyNetQException>()
+                .Or<BrokerUnreachableException>()
+                .RetryForever();
+
+            policy.Execute(TryConnect);
+        }
+		
+		na classe RegistroClienteIntegrationHandler
+		é criado a trigger para quando reconectar com o container, relaizar o registro novamente dos handlers.
