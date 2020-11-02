@@ -1,0 +1,3 @@
+Criado a classe de Request de integração entre as APIs UsuarioRegistradoIntegrationEvent 
+no projeto Core.
+

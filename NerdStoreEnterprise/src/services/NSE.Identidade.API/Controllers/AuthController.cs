@@ -20,6 +20,7 @@ namespace NSE.Identidade.API.Controllers
 	{
 		private readonly SignInManager<IdentityUser> _signInManager;
 		private readonly UserManager<IdentityUser> _userManager;
+
 		private readonly AppSettings _appSettings;
 
 		public AuthController(SignInManager<IdentityUser> signInManager, 
