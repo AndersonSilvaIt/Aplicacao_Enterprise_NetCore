@@ -1,3 +1,24 @@
 Criado a classe de Request de integração entre as APIs UsuarioRegistradoIntegrationEvent 
 no projeto Core.
 
+instalação do pacote para trabalhar com o RabbitMQ
+
+biblioteca para facilitar a utilização com o .net Core
+
+EasyNetQ
+
+instalado no serviço de Identidade
+
+install-package EasyNetQ
+
+para implementar a comunicação, necessário mostrar a porta que foi criado o RabbitMQ
+no caso, está usando a porta 5672
+
+_bus = RabbitHutch.CreateBus("host=localhost:5672");
+
+implementado o envio da mensagem para registrar um cliente, agora realizado a tratativa de obter a resposta e tratar, na API de cliente.
+
+criado a classe RegistroClienteIntegrationHandler que irá rodar como um serviço em background
+
+instalado o EasyNetQ na API de clientes também.
+
