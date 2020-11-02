@@ -1,0 +1,10 @@
+Instalado o EasyNetQ no app de MessageBus
+
+install-package EasyNetQ
+
+implementado a classe de abstração para tratar a publicação de eventos do EasyNetQ.
+
+Implementado o Polly, caso ocorrer algum erro, realizar novas tentativas.
+isso no projeto de MEssageBus
+
+install-package Polly 

@@ -2,10 +2,10 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 using NSE.Clientes.API.Data;
 using Microsoft.AspNetCore.Builder;
 using NSE.WebAPI.Core.Identidade;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace NSE.Clientes.API.Configuration
 {

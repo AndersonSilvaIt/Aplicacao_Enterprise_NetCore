@@ -1,0 +1,10 @@
+implementado a connection string do RabbitMQ no appsettings.Development 
+da API de cliente.
+
+"MessageQueueConnection": {
+        "MessageBus":  "host=localhost:5672;publisherConfirms:true;timeout=10"
+    },
+	
+	publisherConfirms = aguarda uma confirmação da fila, caso não vier nenhuma resposta, é gerado uma excessão.
+	
+	
