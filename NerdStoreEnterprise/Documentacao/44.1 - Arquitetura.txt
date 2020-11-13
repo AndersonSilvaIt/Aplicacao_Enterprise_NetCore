@@ -1,0 +1,7 @@
+Para implementar a arquitetura com o API Gateware
+
+utilizado a ferramenta OCELOT,.Net Core API Gateway
+
+Outra opção
+
+Azure API Gateway

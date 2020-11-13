@@ -1,0 +1,17 @@
+inicialmente instalar as dependÃªncias utilizadas no projeto
+
+install-package Microsoft.EntityFrameworkCore
+
+install-package Microsoft.EntityFrameworkCore.Abstractions
+install-package Microsoft.EntityFrameworkCore.Relational
+install-package Microsoft.EntityFrameworkCore.SqlServer
+install-package Microsoft.EntityFrameworkCore.Design
+install-package Swashbuckle.AspNetCore
+
+Implementado Arquitetura
+
+
+
+Após implementar o Contexto e as classes necessárias, hora de gerar  as migrations
+
+Add-Migration Carrinho -StartupProject NSE.Carrinho.API 
