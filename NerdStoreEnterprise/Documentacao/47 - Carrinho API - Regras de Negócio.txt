@@ -1,0 +1,2 @@
+PT 01 
+Implementado algumas regras de negócio nas próprias classes.
