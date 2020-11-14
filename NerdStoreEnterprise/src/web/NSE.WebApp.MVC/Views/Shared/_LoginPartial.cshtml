@@ -1,5 +1,7 @@
 ﻿@using NSE.WebApp.MVC.Extensions
-@inject IUser AppUser
+@using NSE.WebAPI.Core.Usuario
+
+@inject IAspNetUser AppUser
 <!--AppUser.EstaAutenticado()-->
 
 @if (AppUser.EstaAutenticado())

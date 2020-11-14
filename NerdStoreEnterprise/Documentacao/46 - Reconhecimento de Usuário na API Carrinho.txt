@@ -1,0 +1,12 @@
+Colocado os dados de usuário no Projeto Core, para compartilhar em todos os projetos
+
+
+
+na injeção e dependência, é necessário injetar o HttpContextAcessor também,
+pois ele é usado na injeção do usuário.
+
+
+	services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+	services.AddScoped<IAspNetUser, AspNetUser>();
+	
+	
