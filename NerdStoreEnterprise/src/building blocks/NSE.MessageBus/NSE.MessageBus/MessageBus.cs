@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
 using EasyNetQ;
-using EasyNetQ.Internals;
 using NSE.Core.Messages.Integration;
 using Polly;
 using RabbitMQ.Client.Exceptions;
@@ -21,59 +20,59 @@ namespace NSE.MessageBus
             TryConnect();
         }
 
-        public bool IsConnected => _bus?.Advanced.IsConnected ?? false;
+        public bool IsConnected => _bus?.IsConnected ?? false;
         public IAdvancedBus AdvancedBus => _bus?.Advanced;
 
         public void Publish<T>(T message) where T : IntegrationEvent
         {
             TryConnect();
-            _bus.PubSub.Publish(message);
+            _bus.Publish(message);
         }
 
         public async Task PublishAsync<T>(T message) where T : IntegrationEvent
         {
             TryConnect();
-            await _bus.PubSub.PublishAsync(message);
+            await _bus.PublishAsync(message);
         }
 
         public void Subscribe<T>(string subscriptionId, Action<T> onMessage) where T : class
         {
             TryConnect();
-            _bus.PubSub.Subscribe(subscriptionId, onMessage);
+            _bus.Subscribe(subscriptionId, onMessage);
         }
 
         public void SubscribeAsync<T>(string subscriptionId, Func<T, Task> onMessage) where T : class
         {
             TryConnect();
-            _bus.PubSub.SubscribeAsync(subscriptionId, onMessage);
+            _bus.SubscribeAsync(subscriptionId, onMessage);
         }
 
         public TResponse Request<TRequest, TResponse>(TRequest request) where TRequest : IntegrationEvent
             where TResponse : ResponseMessage
         {
             TryConnect();
-            return _bus.Rpc.Request<TRequest, TResponse>(request);
+            return _bus.Request<TRequest, TResponse>(request);
         }
 
         public async Task<TResponse> RequestAsync<TRequest, TResponse>(TRequest request)
             where TRequest : IntegrationEvent where TResponse : ResponseMessage
         {
             TryConnect();
-            return await _bus.Rpc.RequestAsync<TRequest, TResponse>(request);
+            return await _bus.RequestAsync<TRequest, TResponse>(request);
         }
 
         public IDisposable Respond<TRequest, TResponse>(Func<TRequest, TResponse> responder)
             where TRequest : IntegrationEvent where TResponse : ResponseMessage
         {
             TryConnect();
-            return _bus.Rpc.Respond(responder);
+            return _bus.Respond(responder);
         }
 
-        public AwaitableDisposable<IDisposable> RespondAsync<TRequest, TResponse>(Func<TRequest, Task<TResponse>> responder)
+        public IDisposable RespondAsync<TRequest, TResponse>(Func<TRequest, Task<TResponse>> responder)
             where TRequest : IntegrationEvent where TResponse : ResponseMessage
         {
             TryConnect();
-            return _bus.Rpc.RespondAsync(responder);
+            return _bus.RespondAsync(responder);
         }
 
         private void TryConnect()

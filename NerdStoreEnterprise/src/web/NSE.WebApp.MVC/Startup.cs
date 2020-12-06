@@ -7,36 +7,38 @@ using NSE.WebApp.MVC.Configuration;
 
 namespace NSE.WebApp.MVC
 {
-	public class Startup
-	{
-		public IConfiguration Configuration { get; }
-		public Startup(IHostEnvironment hostingEnvironment)
-		{
-			var builder = new ConfigurationBuilder()
-				.SetBasePath(hostingEnvironment.ContentRootPath)
-				.AddJsonFile("appsettings.json", true, true)
-				.AddJsonFile($"appsettings.{hostingEnvironment.EnvironmentName}.json", true, true)
-				.AddEnvironmentVariables();
+    public class Startup
+    {
+        public IConfiguration Configuration { get; }
 
-			if (hostingEnvironment.IsDevelopment())
-			{
-				builder.AddUserSecrets<Startup>();
-			}
+        public Startup(IHostEnvironment hostEnvironment)
+        {
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(hostEnvironment.ContentRootPath)
+                .AddJsonFile("appsettings.json", true, true)
+                .AddJsonFile($"appsettings.{hostEnvironment.EnvironmentName}.json", true, true)
+                .AddEnvironmentVariables();
 
-			Configuration = builder.Build();
-		}
+            if (hostEnvironment.IsDevelopment())
+            {
+                builder.AddUserSecrets<Startup>();
+            }
 
-		public void ConfigureServices(IServiceCollection services)
-		{
-			services.AddIdentityConfiguration();
-			services.AddMvcConfiguration(Configuration);
+            Configuration = builder.Build();
+        }
 
-			services.RegisterServices(Configuration);
-		}
+        public void ConfigureServices(IServiceCollection services)
+        {
+            services.AddIdentityConfiguration();
 
-		public void Configure(IApplicationBuilder app, IHostEnvironment env)
-		{
-			app.UseMvcConfiguration(env);
-		}
-	}
+            services.AddMvcConfiguration(Configuration);
+
+            services.RegisterServices(Configuration);
+        }
+
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        {
+            app.UseMvcConfiguration(env);
+        }
+    }
 }

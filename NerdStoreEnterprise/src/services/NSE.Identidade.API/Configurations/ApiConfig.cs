@@ -4,35 +4,36 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using NSE.WebAPI.Core.Identidade;
 
-namespace NSE.Identidade.API.Configurations
+namespace NSE.Identidade.API.Configuration
 {
-	public static class ApiConfig
-	{
-		public static IServiceCollection AddApiConfiguration(this IServiceCollection services)
-		{
-			services.AddControllers();
-			return services;
-		}
+    public static class ApiConfig
+    {
+        public static IServiceCollection AddApiConfiguration(this IServiceCollection services)
+        {
+            services.AddControllers();
 
-		public static IApplicationBuilder UseApiConfiguration(this IApplicationBuilder app, IWebHostEnvironment env)
-		{
-			if (env.IsDevelopment())
-			{
-				app.UseDeveloperExceptionPage();
-			}
+            return services;
+        }
 
-			app.UseHttpsRedirection();
+        public static IApplicationBuilder UseApiConfiguration(this IApplicationBuilder app, IWebHostEnvironment env)
+        {
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
 
-			app.UseRouting();
+            app.UseHttpsRedirection();
 
-			app.UseAuthConfiguration();
+            app.UseRouting();
 
-			app.UseEndpoints(endpoints =>
-			{
-				endpoints.MapControllers();
-			});
-			return app;
-		}
+            app.UseAuthConfiguration();
 
-	}
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
+
+            return app;
+        }
+    }
 }

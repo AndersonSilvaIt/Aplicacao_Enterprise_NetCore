@@ -1,15 +1,15 @@
-﻿using MediatR;
-using System;
+﻿using System;
+using MediatR;
 
 namespace NSE.Core.Messages
 {
-	public class Event : Message, INotification
-	{
-		public DateTime TimeStamp { get; set; }
+    public class Event : Message, INotification
+    {
+        public DateTime Timestamp { get; private set; }
 
-		protected Event()
-		{
-			TimeStamp = new DateTime();
-		}
-	}
+        protected Event()
+        {
+            Timestamp = DateTime.Now;
+        }
+    }
 }

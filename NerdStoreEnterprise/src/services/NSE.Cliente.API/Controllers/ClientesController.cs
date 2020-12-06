@@ -1,9 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using NSE.Clientes.API.Application.Commands;
 using NSE.Core.Mediator;
 using NSE.WebAPI.Core.Controllers;
-using System;
-using System.Threading.Tasks;
 
 namespace NSE.Clientes.API.Controllers
 {
@@ -19,7 +19,8 @@ namespace NSE.Clientes.API.Controllers
         [HttpGet("clientes")]
         public async Task<IActionResult> Index()
         {
-            var resultado = await _mediatorHandler.EnviarComando(new RegistrarClienteCommand(Guid.NewGuid(), "Bruce", "bruce@teste.com", "35939202802"));
+            var resultado = await _mediatorHandler.EnviarComando(
+                new RegistrarClienteCommand(Guid.NewGuid(), "Eduardo", "edu@edu.com", "30314299076"));
 
             return CustomResponse(resultado);
         }

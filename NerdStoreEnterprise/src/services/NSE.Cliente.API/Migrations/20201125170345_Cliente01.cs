@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace NSE.Clientes.API.Migrations
 {
-    public partial class Clientes : Migration
+    public partial class Cliente01 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

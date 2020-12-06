@@ -7,7 +7,7 @@ namespace NSE.Clientes.API.Models
     {
         public string Nome { get; private set; }
         public Email Email { get; private set; }
-        public CPF Cpf { get; private set; }
+        public Cpf Cpf { get; private set; }
         public bool Excluido { get; private set; }
         public Endereco Endereco { get; private set; }
 
@@ -19,7 +19,7 @@ namespace NSE.Clientes.API.Models
             Id = id;
             Nome = nome;
             Email = new Email(email);
-            Cpf = new CPF(cpf);
+            Cpf = new Cpf(cpf);
             Excluido = false;
         }
 

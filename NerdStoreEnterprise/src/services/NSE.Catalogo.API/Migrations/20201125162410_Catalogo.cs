@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace NSE.Catalogo.API.Migrations
 {
-    public partial class Initial : Migration
+    public partial class Catalogo : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

@@ -1,10 +1,11 @@
-﻿using FluentValidation;
-using System;
+﻿using System;
+using System.Text.Json.Serialization;
+using FluentValidation;
 
 namespace NSE.Carrinho.API.Model
 {
-	public class CarrinhoItem
-	{
+    public class CarrinhoItem
+    {
         public CarrinhoItem()
         {
             Id = Guid.NewGuid();
@@ -19,8 +20,8 @@ namespace NSE.Carrinho.API.Model
 
         public Guid CarrinhoId { get; set; }
 
+        [JsonIgnore]
         public CarrinhoCliente CarrinhoCliente { get; set; }
-
 
         internal void AssociarCarrinho(Guid carrinhoId)
         {
@@ -53,25 +54,24 @@ namespace NSE.Carrinho.API.Model
             {
                 RuleFor(c => c.ProdutoId)
                     .NotEqual(Guid.Empty)
-                    .WithMessage("Id do produto inválido.");
+                    .WithMessage("Id do produto inválido");
 
                 RuleFor(c => c.Nome)
                     .NotEmpty()
-                    .WithMessage("O nome do produto não foi informado.");
+                    .WithMessage("O nome do produto não foi informado");
 
                 RuleFor(c => c.Quantidade)
-                    .LessThan(0)
-                    .WithMessage(item => $"A quantidade mínima para o {item.Nome} é 1.");
+                    .GreaterThan(0)
+                    .WithMessage(item => $"A quantidade miníma para o {item.Nome} é 1");
 
                 RuleFor(c => c.Quantidade)
-                    .LessThan(CarrinhoCliente.MAX_QUANTIDADE_ITEM)
-                    .WithMessage(item => $"A quantidade mínima para o {item.Nome} é {CarrinhoCliente.MAX_QUANTIDADE_ITEM}.");
+                    .LessThanOrEqualTo(CarrinhoCliente.MAX_QUANTIDADE_ITEM)
+                    .WithMessage(item => $"A quantidade máxima do {item.Nome} é {CarrinhoCliente.MAX_QUANTIDADE_ITEM}");
 
                 RuleFor(c => c.Valor)
                     .GreaterThan(0)
                     .WithMessage(item => $"O valor do {item.Nome} precisa ser maior que 0");
             }
         }
-
     }
 }

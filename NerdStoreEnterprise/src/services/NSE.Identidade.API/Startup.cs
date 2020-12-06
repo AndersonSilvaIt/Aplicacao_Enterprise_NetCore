@@ -4,43 +4,45 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using NSE.Identidade.API.Configuration;
-using NSE.Identidade.API.Configurations;
 
 namespace NSE.Identidade.API
 {
-	public class Startup
-	{
-		public IConfiguration Configuration { get; }
-		public Startup(IHostEnvironment hostEnvironment)
-		{
-			var builder = new ConfigurationBuilder()
-				.SetBasePath(hostEnvironment.ContentRootPath)
-				.AddJsonFile("appsettings.json", true, true)
-				.AddJsonFile($"appsettings.{hostEnvironment.EnvironmentName}.json", true, true)
-				.AddEnvironmentVariables();
+    public class Startup
+    {
+        public IConfiguration Configuration { get; }
 
-			if (hostEnvironment.IsDevelopment())
-			{
-				builder.AddUserSecrets<Startup>();
-			}
+        public Startup(IHostEnvironment hostEnvironment)
+        {
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(hostEnvironment.ContentRootPath)
+                .AddJsonFile("appsettings.json", true, true)
+                .AddJsonFile($"appsettings.{hostEnvironment.EnvironmentName}.json", true, true)
+                .AddEnvironmentVariables();
 
-			Configuration = builder.Build();
-		}
+            if (hostEnvironment.IsDevelopment())
+            {
+                builder.AddUserSecrets<Startup>();
+            }
 
-		public void ConfigureServices(IServiceCollection services)
-		{
-			services.AddIdentityConfiguration(Configuration);
+            Configuration = builder.Build();
+        }
 
-			services.AddApiConfiguration();
-			services.AddSwaggerConfiguration();
+        public void ConfigureServices(IServiceCollection services)
+        {
+            services.AddIdentityConfiguration(Configuration);
 
-			services.AddMessageBusConfiguration(Configuration);
-		}
+            services.AddApiConfiguration();
 
-		public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-		{
-			app.UseSwaggerConfiguration();
-			app.UseApiConfiguration(env);
-		}
-	}
+            services.AddSwaggerConfiguration();
+
+            services.AddMessageBusConfiguration(Configuration);
+        }
+
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        {
+            app.UseSwaggerConfiguration();
+
+            app.UseApiConfiguration(env);
+        }
+    }
 }

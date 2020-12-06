@@ -19,9 +19,9 @@ namespace NSE.Clientes.API.Data.Mappings
             {
                 tf.Property(c => c.Numero)
                     .IsRequired()
-                    .HasMaxLength(CPF.CpfMaxLength)
+                    .HasMaxLength(Cpf.CpfMaxLength)
                     .HasColumnName("Cpf")
-                    .HasColumnType($"varchar({CPF.CpfMaxLength})");
+                    .HasColumnType($"varchar({Cpf.CpfMaxLength})");
             });
 
             builder.OwnsOne(c => c.Email, tf =>

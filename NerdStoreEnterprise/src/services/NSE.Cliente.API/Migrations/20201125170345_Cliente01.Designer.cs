@@ -10,8 +10,8 @@ using NSE.Clientes.API.Data;
 namespace NSE.Clientes.API.Migrations
 {
     [DbContext(typeof(ClientesContext))]
-    [Migration("20201007013127_Clientes")]
-    partial class Clientes
+    [Migration("20201125170345_Cliente01")]
+    partial class Cliente01
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

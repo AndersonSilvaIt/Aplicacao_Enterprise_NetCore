@@ -2,64 +2,72 @@
 
 namespace NSE.Core.DomainObjects
 {
-	public class CPF
-	{
-		public const int CpfMaxLength = 11;
-		public string Numero { get; private set; }
+    public class Cpf
+    {
+        public const int CpfMaxLength = 11;
+        public string Numero { get; private set; }
 
-		// Construtor do EntityFramework
-		protected CPF() { }
+        //Construtor do EntityFramework
+        protected Cpf() { }
 
-		public CPF(string numero)
-		{
-			//ex
-			if (!CPF.Validar(numero)) throw new DomainException("CPF inválido");
+        public Cpf(string numero)
+        {
+            if (!Validar(numero)) throw new DomainException("CPF inválido");
+            Numero = numero;
+        }
 
-			Numero = numero;
-		}
+        public static bool Validar(string cpf)
+        {
+            cpf = cpf.ApenasNumeros(cpf);
 
-		public static bool Validar(string cpf)
-		{
-			cpf = cpf.ApenasNumeros(cpf);
+            if (cpf.Length > 11)
+                return false;
 
+            while (cpf.Length != 11)
+                cpf = '0' + cpf;
 
-			if (cpf.Length > 11)
-				return false;
+            var igual = true;
+            for (var i = 1; i < 11 && igual; i++)
+                if (cpf[i] != cpf[0])
+                    igual = false;
 
-			while (cpf.Length != 11)
-				cpf = '0' + cpf;
+            if (igual || cpf == "12345678909")
+                return false;
 
-			var igual = true;
+            var numeros = new int[11];
 
-			for (int i = 0; i < 11; i++)
-				if (cpf[i] != cpf[0])
-					igual = false;
+            for (var i = 0; i < 11; i++)
+                numeros[i] = int.Parse(cpf[i].ToString());
 
-			if (igual || cpf == "12345678909")
-				return false;
+            var soma = 0;
+            for (var i = 0; i < 9; i++)
+                soma += (10 - i) * numeros[i];
 
-			var numeros = new int[11];
+            var resultado = soma % 11;
 
-			for (int i = 0; i < 11; i++)
-				numeros[i] = int.Parse(cpf[i].ToString());
+            if (resultado == 1 || resultado == 0)
+            {
+                if (numeros[9] != 0)
+                    return false;
+            }
+            else if (numeros[9] != 11 - resultado)
+                return false;
 
-			var soma = 0;
-			for (int i = 0; i < 9; i++)
-				soma += (10 - i) * numeros[i];
+            soma = 0;
+            for (var i = 0; i < 10; i++)
+                soma += (11 - i) * numeros[i];
 
-			var resultado = soma % 11;
+            resultado = soma % 11;
 
-			//if(resultado == 1 || resultado == 0)
-			//{
-			//	if (numeros[10] != 0)
-			//		return false;
-			//}
-			//else if(numeros[10] != 11 - resultado)
-			//	return false;
+            if (resultado == 1 || resultado == 0)
+            {
+                if (numeros[10] != 0)
+                    return false;
+            }
+            else if (numeros[10] != 11 - resultado)
+                return false;
 
-			return true;
-		}
-
-	}
-
+            return true;
+        }
+    }
 }

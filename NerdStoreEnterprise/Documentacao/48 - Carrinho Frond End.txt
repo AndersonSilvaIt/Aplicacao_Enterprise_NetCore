@@ -1,0 +1,18 @@
+Criado a controller de Carrinho no projeto Web
+
+Na view de ProdutoDetalhe, implementado o form para realizar o post de adicionar o item no carrinho.
+
+Criado a view do carrinho.
+
+no Select de quantidade é implementado o id e nome com o mesmo nome da propriedade, quando realizar o submit, irá enviar esse dado também para
+o Serv.
+                                            <select id="Quantidade" name="Quantidade" class="form-control">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                            </select>
+											
+Erro encontrado na API de carrinho, faltou implementar a configuração de autenticação e autorização no Startup do projeto Carrinho API.
+											
