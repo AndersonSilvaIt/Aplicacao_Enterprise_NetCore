@@ -1,0 +1,4 @@
+Criado o Projecto de BFF para compras
+Backend From FrontEnd
+
+implementado as coinfigurações inicials para o BFF
