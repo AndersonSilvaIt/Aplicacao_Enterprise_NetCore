@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using NSE.Core.Comunication;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Text.Json;
@@ -17,7 +18,7 @@ namespace NSE.BFF.Compras.Services
 				"application/json");
 		}
 
-		private async Task<T> DeserializarObjetoResponse<T>(HttpResponseMessage responseMessage)
+		protected async Task<T> DeserializarObjetoResponse<T>(HttpResponseMessage responseMessage)
 		{
 			var options = new JsonSerializerOptions
 			{
@@ -27,13 +28,17 @@ namespace NSE.BFF.Compras.Services
 			return JsonSerializer.Deserialize<T>(await responseMessage.Content.ReadAsStringAsync(), options);
 		}
 
-
 		protected bool TratarErrosResponse(HttpResponseMessage response)
 		{
 			if (response.StatusCode == HttpStatusCode.BadRequest) return false;
 
 			response.EnsureSuccessStatusCode();
 			return true;
+		}
+
+		protected ResponseResult RetornoOK()
+		{
+			return new ResponseResult();
 		}
 
 	}

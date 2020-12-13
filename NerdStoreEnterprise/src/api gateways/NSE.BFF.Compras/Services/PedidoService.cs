@@ -8,7 +8,7 @@ namespace NSE.BFF.Compras.Services
 	public interface IPedidoService
 	{ }
 
-	public class PedidoService : Service, ICarrinhoService
+	public class PedidoService : Service, IPedidoService
 	{
 		private readonly HttpClient _httpClient;
 

@@ -1,0 +1,3 @@
+criado as entidades de DTO no BFF
+
+Implementado as configurações Inicial do BFF.

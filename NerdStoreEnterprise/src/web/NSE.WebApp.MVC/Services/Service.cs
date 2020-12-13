@@ -2,8 +2,8 @@
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using NSE.Core.Comunication;
 using NSE.WebApp.MVC.Extensions;
-using NSE.WebApp.MVC.Models;
 
 namespace NSE.WebApp.MVC.Services
 {
