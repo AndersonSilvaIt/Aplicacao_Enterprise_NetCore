@@ -1,0 +1,3 @@
+instalação dos pacotes necesários da API
+
+Configurações padrões da API de acordo com as APIs anteriores
