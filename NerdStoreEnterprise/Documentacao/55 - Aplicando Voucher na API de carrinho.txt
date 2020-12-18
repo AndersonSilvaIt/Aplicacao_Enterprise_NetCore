@@ -1,0 +1,9 @@
+Implementar o Voucher no carrinho API para realizar o cálculo
+
+Criar a migration
+
+add-migration Voucher -StartupProject NSE.Carrinho.API
+
+update-database Voucher -StartupProject NSE.Carrinho.API
+
+Implementado o voucher na API de carrinho, controller e etc.
