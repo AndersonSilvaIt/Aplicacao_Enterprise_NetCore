@@ -1,0 +1,25 @@
+Quem fo consumir a API de voucher, não precisa receber todos os dados
+referente ao voucher, como Estado, se está ativo ou não, data de  vencimento e etc.
+
+Então é criado um DTO para retoro, onde retornará somente informações relevantes para quem irá consumir a API
+
+ex: Condigo, desconto ...
+
+Implementado o specification Pattern
+
+necessário instalação
+
+Pacote .Net DevPack (criado pelo Eduardo Pires)
+
+pacote será instalado no Core da aplicação
+
+
+Install-Package  NetDevPack -Version 1.1.0
+
+Implementado as classes de validações Specifications
+
+VoucherAtivoSpecification
+VoucherDataSpecification
+VoucherQuantidadeSpecification
+
+na classe Voucher, implementado o médotos para validação.
