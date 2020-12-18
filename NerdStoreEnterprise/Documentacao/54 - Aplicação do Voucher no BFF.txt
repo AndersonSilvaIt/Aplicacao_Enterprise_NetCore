@@ -1,0 +1,24 @@
+Implementado a controller de Voucher
+
+realizado as configurações de Dependências do Voucher
+
+o Método aplicar Voucher
+
+        [HttpPost]
+        public async Task<IActionResult> AplicarVoucher([FromBody] string voucherCodigo)
+        {
+            var voucher = await _pedidoService.ObterVoucherPorCodigo(voucherCodigo);
+
+            if(voucher == null)
+            {
+                AdicionarErroProcessamento("Voucher inválido ou não encontrado!");
+                return CustomResponse();
+            }
+
+            var resposta = await _pedidoService.AplicarVoucherCarrinho(voucher);
+
+            return CustomResponse(resposta);
+        }
+		
+		como está sendo enviado como um POST, então no parâmetro do métodos precisa marcar como [FromBody]
+		
