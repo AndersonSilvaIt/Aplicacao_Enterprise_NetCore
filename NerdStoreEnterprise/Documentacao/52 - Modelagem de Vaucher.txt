@@ -1,0 +1,12 @@
+Realizado o mapeamento da entidade Voucher
+
+criado a migration
+
+no Console Manage irpa setar para o projeto de Infra
+
+porém para rodar a migration, no comando precisa referenciar o startupProject para o NSE.Pedidos.API
+pois é nesse projeto que está configurado o Contexto para usar o SQL
+
+add-migration Voucher -Context PedidosContext -StartupProject NSE.Pedido.API
+
+criado o mapeamento, contexto e etc.
