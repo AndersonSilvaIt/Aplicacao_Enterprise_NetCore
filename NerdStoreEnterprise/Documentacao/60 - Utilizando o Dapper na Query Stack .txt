@@ -1,0 +1,9 @@
+Instalação e utilização do Dapper
+direto na camada de API do Pedido
+
+
+install-package dapper
+
+
+é obtido a própria conexão do EntityFramework, no IPedidoRepository
+é criado um método para obter a conexão do EntityFramework.

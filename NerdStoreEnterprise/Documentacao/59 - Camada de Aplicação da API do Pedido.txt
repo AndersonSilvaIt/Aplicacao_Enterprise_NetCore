@@ -5,3 +5,4 @@ Implementado validação do comando de AidicionarPedidoCommand
 implementado o as Validações utilizando o Specification junto com o Fluent API no Voucher
 VoucherValidation
 
+Aplicado validações e criado os eventos para o pedido.
