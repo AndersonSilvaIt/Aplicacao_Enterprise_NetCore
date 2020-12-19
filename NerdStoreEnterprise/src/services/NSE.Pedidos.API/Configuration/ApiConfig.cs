@@ -7,10 +7,10 @@ using Microsoft.Extensions.Hosting;
 using NSE.Pedidos.Infra.Data;
 using NSE.WebAPI.Core.Identidade;
 
-namespace NSE.Pedido.API.Configuration
+namespace NSE.Pedidos.API.Configuration
 {
     public static class ApiConfig
-	{
+    {
         public static void AddApiConfiguration(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<PedidosContext>(options =>

@@ -5,7 +5,7 @@ using NSE.Core.DomainObjects;
 using NSE.Core.Mediator;
 using NSE.Core.Messages;
 using NSE.Pedidos.Domain.Pedidos;
-using NSE.Pedidos.Domain.Vouchers;
+using NSE.Pedidos.Domain;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +16,7 @@ namespace NSE.Pedidos.Infra.Data
 	{
 		private readonly IMediatorHandler _mediatorHandler;
 	
-		public PedidosContext(DbContextOptions<PedidosContext> options) : base(options)
+		public PedidosContext(DbContextOptions<PedidosContext> options, IMediatorHandler mediatorHandler) : base(options)
 		{
 			_mediatorHandler = mediatorHandler;
 		}

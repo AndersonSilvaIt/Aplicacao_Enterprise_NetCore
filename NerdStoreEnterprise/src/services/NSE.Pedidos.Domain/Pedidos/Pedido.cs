@@ -1,8 +1,7 @@
-﻿using NSE.Core.DomainObjects;
-using NSE.Pedidos.Domain.Vouchers;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using NSE.Core.DomainObjects;
 
 namespace NSE.Pedidos.Domain.Pedidos
 {
@@ -21,8 +20,7 @@ namespace NSE.Pedidos.Domain.Pedidos
 		}
 
 		// EF ctor
-		public Pedido()
-		{ }
+		protected Pedido() { }
 
 		public int Codigo { get; private set; }
 		public Guid ClienteId { get; private set; }

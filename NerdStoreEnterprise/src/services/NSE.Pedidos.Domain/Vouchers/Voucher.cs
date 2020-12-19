@@ -3,7 +3,7 @@ using NSE.Pedidos.Domain.Vouchers.Specs;
 using System;
 using System.Text;
 
-namespace NSE.Pedidos.Domain.Vouchers
+namespace NSE.Pedidos.Domain
 {
 	public class Voucher : Entity, IAggregateRoot
 	{

@@ -1,0 +1,1 @@
+Criado os DTOs da aplicação e os handlers iniciais.
