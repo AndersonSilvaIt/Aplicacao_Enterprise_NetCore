@@ -1,0 +1,14 @@
+A entidade pedido, possui uma entidade interna Endereco,
+porém as propriedades de Endereco irá ser criados na tabela de Pedido,
+isso é configurado no Mapping do EntityFramework 
+PedidoMapping;
+
+são endereços diferentes no banco, o endereço do Pedido, e o endereço do cliente;
+
+gerar as migrations
+
+Escolher o projeto NSE.Pedidos.Infra
+
+Add-Migration pedidos -StartupProject NSE.Pedido.API
+
+update-database -StartupProject NSE.Pedido.API

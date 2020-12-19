@@ -14,6 +14,7 @@ namespace NSE.Pedidos.Domain.Pedidos
 
 		// EF Rel.
 		public Pedido Pedido { get; set; }
+		public static decimal Sum { get; internal set; }
 
 		public PedidoItem(Guid produtoId, string produtoNome, int quantidade, 
 			decimal valorUnitario, string produtoImagem = null)
