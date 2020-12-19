@@ -1,0 +1,4 @@
+no pedido é refeito o cálculo com os descontos, 
+uma regra para validar o valor com ocarrinho,
+se por acaso os valores forem diferentes, não poderá gerar o pedido.
+
