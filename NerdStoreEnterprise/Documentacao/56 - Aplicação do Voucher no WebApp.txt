@@ -1,0 +1,10 @@
+insert into Vouchers values ('b7cd3f86-d981-41d9-a7d9-1bd369b53c95', '150-OFF-GERAL', NULL, 150, 50, 1, '2020-06-12', NULL, '2022-01-01', 'True', 'False'  )
+insert into Vouchers values ('e00cec30-708b-4109-96c6-d606e863f7ff', '150-OFF-GERAL', NULL, 150, 50, 1, '2020-06-12', NULL, '2022-01-01', 'True', 'False'  )
+insert into Vouchers values ('d98fb9d2-0090-45d9-bfb4-c2b798c790ec', '50-OFF-GERAL', 50, NULL, 50, 0, '2020-06-12', NULL, '2022-01-01', 'True', 'False'  )
+insert into Vouchers values ('a88b6700-a0c0-43b7-8c34-12de78800860', '10-OFF-GERAL', 10, null, 50, 0, '2020-06-12', NULL, '2022-01-01', 'True', 'False'  )
+
+dados para simulação de Vouchers
+
+é necessário instalar a biblioteca MediatR.Extensions.Microsoft.DependencyInjection
+no projeto de API, o MediatR está instalado em outros projetos, mas para usa-lo nessa API,
+precisa instalar a extensão.

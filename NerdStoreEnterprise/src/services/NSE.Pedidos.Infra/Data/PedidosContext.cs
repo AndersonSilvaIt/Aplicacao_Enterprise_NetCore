@@ -1,4 +1,6 @@
-﻿using FluentValidation.Results;
+﻿
+
+using FluentValidation.Results;
 using Microsoft.EntityFrameworkCore;
 using NSE.Core.Data;
 using NSE.Core.DomainObjects;
