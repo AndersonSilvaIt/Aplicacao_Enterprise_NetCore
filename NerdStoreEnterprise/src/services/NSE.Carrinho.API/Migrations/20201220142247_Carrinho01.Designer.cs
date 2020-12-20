@@ -10,8 +10,8 @@ using NSE.Carrinho.API.Data;
 namespace NSE.Carrinho.API.Migrations
 {
     [DbContext(typeof(CarrinhoContext))]
-    [Migration("20201218234236_Voucher2")]
-    partial class Voucher2
+    [Migration("20201220142247_Carrinho01")]
+    partial class Carrinho01
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -115,6 +115,7 @@ namespace NSE.Carrinho.API.Migrations
                     b.HasOne("NSE.Carrinho.API.Model.CarrinhoCliente", "CarrinhoCliente")
                         .WithMany("Itens")
                         .HasForeignKey("CarrinhoId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 #pragma warning restore 612, 618

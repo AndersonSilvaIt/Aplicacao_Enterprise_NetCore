@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace NSE.Carrinho.API.Migrations
 {
-    public partial class Voucher2 : Migration
+    public partial class Carrinho01 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -46,7 +46,7 @@ namespace NSE.Carrinho.API.Migrations
                         column: x => x.CarrinhoId,
                         principalTable: "CarrinhoCliente",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(

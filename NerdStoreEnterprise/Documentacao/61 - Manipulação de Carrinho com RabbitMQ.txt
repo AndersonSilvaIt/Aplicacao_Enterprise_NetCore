@@ -1,0 +1,24 @@
+Após implementar o pedido, realizado com uscesso,
+a API precisa se comunicar com a API de carrinho para excluir o mesmo, ou alterar o estado.
+para isso é usado o RabbitMQ (mensageria)
+
+a classe PedidoEventHandler, irá publicar um evento na fila, 
+public async Task Handle(PedidoRealizadoEvent message, CancellationToken cancellationToken)
+		{
+			
+			await _bus.PublishAsync(new PedidoRealizadoIntegrationEvent(message.ClienteId));
+		}
+		
+		do tipo PedidoRealizadoIntegrationEvent, após isso, quem estará olhando a fila, irá obter esse evento e consolidar.
+		necessário incrementar as configurações de mensageria (MessageBus
+		
+na API de carrinho, também é configurado a mensageria,
+	public class CarrinhoIntegrationHandler : BackgroundService
+	{
+		protected override Task ExecuteAsync(CancellationToken stoppingToken)
+		{
+			throw new System.NotImplementedException();
+		}
+	}
+	
+	criado o C que herda de BackgroundService, esse BackgroundService que irá ficar escutando a fila de eventos
