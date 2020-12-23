@@ -1,0 +1,20 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace NSE.WebApp.MVC.Models
+{
+	public class PedidoTransacaoViewModel
+	{
+		public decimal ValorTotal { get; set; }
+		public decimal Desconto { get; set; }
+		public string VoucherCodigo { get; set; }
+		public bool VoucherUtilizado { get; set; }
+
+		public List<ItemCarrinhoViewModel> Itens { get; set; } = new List<ItemCarrinhoViewModel>();
+
+		public EnderecoViewModel Endereco { get; set; }
+
+	}
+}

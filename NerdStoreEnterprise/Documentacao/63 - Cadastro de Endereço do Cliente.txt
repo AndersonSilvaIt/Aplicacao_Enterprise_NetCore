@@ -1,0 +1,7 @@
+API de cliente, ClienteController
+
+implementado novos métodos para obter e cadastrar Clientes.
+
+Implementado os servicos para comunicação entre as APIs
+
+ajuste nas injeções de dependências.
