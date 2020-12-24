@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace NSE.BFF.Compras.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class CarrinhoController : MainController
     {
         private readonly ICarrinhoService _carrinhoSerivce;

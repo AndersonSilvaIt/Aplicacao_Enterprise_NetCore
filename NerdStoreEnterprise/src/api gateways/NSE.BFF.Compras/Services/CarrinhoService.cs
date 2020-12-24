@@ -44,7 +44,7 @@ namespace NSE.BFF.Compras.Services
 
 			if (!TratarErrosResponse(response)) return await DeserializarObjetoResponse<ResponseResult>(response);
 
-			return RetornoOK();
+			return RetornoOk();
 		}
 
 		public async Task<ResponseResult> AtualizarItemCarrinho(Guid produtoId, ItemCarrinhoDTO carrinho)
@@ -55,7 +55,7 @@ namespace NSE.BFF.Compras.Services
 
 			if (!TratarErrosResponse(response)) return await DeserializarObjetoResponse<ResponseResult>(response);
 
-			return RetornoOK();
+			return RetornoOk();
 		}
 
 		public async Task<ResponseResult> RemoverItemCarrinho(Guid produtoId)
@@ -64,7 +64,7 @@ namespace NSE.BFF.Compras.Services
 
 			if (!TratarErrosResponse(response)) return await DeserializarObjetoResponse<ResponseResult>(response);
 
-			return RetornoOK();
+			return RetornoOk();
 		}
 
 		public async Task<ResponseResult> AplicarVoucherCarrinho(VoucherDTO voucher)
@@ -75,7 +75,7 @@ namespace NSE.BFF.Compras.Services
 
 			if (!TratarErrosResponse(responde)) return await DeserializarObjetoResponse<ResponseResult>(responde);
 
-			return RetornoOK();
+			return RetornoOk();
 		}
 	}
 }

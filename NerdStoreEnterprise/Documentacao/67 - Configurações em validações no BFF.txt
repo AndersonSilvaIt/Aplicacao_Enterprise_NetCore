@@ -1,0 +1,6 @@
+uma das possíveis validações.
+
+Se adicionar o item no carrinho com um valor x (10,00),
+e o cliente quiser fechar o pedido no dia seguinte ou outra semana, o item pode estar com o preço diferente, 
+ou até mesmo sem o produto no estoque, então quando encerrar o pedido, precisa implementar essas validações.
+

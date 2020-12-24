@@ -22,15 +22,15 @@ namespace NSE.WebApp.MVC.Configuration
         {
             //if (env.IsDevelopment())
             //{
-            //    app.UseDeveloperExceptionPage();
+                app.UseDeveloperExceptionPage();
             //}
             //else
             //{
-
+            //
             //}
 
-            app.UseExceptionHandler("/erro/500");
-            app.UseStatusCodePagesWithRedirects("/erro/{0}");
+            //app.UseExceptionHandler("/erro/500");
+            //app.UseStatusCodePagesWithRedirects("/erro/{0}");
             app.UseHsts();
 
             app.UseHttpsRedirection();
@@ -48,7 +48,7 @@ namespace NSE.WebApp.MVC.Configuration
                 SupportedUICultures = supportedCultures
             });
 
-            app.UseMiddleware<ExceptionMiddleware>();
+            //app.UseMiddleware<ExceptionMiddleware>();
 
             app.UseEndpoints(endpoints =>
             {

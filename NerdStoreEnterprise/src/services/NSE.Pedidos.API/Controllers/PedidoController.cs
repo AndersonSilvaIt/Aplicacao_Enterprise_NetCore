@@ -9,7 +9,7 @@ using NSE.WebAPI.Core.Usuario;
 
 namespace NSE.Pedidos.API.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class PedidoController : MainController
     {
         private readonly IMediatorHandler _mediator;
@@ -32,7 +32,7 @@ namespace NSE.Pedidos.API.Controllers
             return CustomResponse(await _mediator.EnviarComando(pedido));
         }
 
-        [HttpGet("pedido/ultomp")]
+        [HttpGet("pedido/ultimo")]
         public async Task<IActionResult> UltimoPedido()
         {
             var pedido = await _pedidoQueries.ObterUltimoPedido(_user.ObterUserId());

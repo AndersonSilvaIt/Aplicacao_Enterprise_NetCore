@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace NSE.Pedidos.API.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class VoucherController : MainController
     {
         private readonly IVoucherQueries _voucherQueries;

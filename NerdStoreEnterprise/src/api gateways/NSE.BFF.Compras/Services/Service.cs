@@ -36,7 +36,7 @@ namespace NSE.BFF.Compras.Services
 			return true;
 		}
 
-		protected ResponseResult RetornoOK()
+		protected ResponseResult RetornoOk()
 		{
 			return new ResponseResult();
 		}
