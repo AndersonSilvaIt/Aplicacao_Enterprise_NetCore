@@ -16,12 +16,12 @@ namespace NSE.Pedidos.API.Controllers
         private readonly IAspNetUser _user;
         private readonly IPedidoQueries _pedidoQueries;
 
-        public PedidoController(IMediatorHandler mediatorHandler,
-                                IAspNetUser aspNetUser,
-                                   IPedidoQueries pedidoQueries)
+        public PedidoController(IMediatorHandler mediator,
+            IAspNetUser user,
+            IPedidoQueries pedidoQueries)
         {
-            _mediator = mediatorHandler;
-            _user = aspNetUser;
+            _mediator = mediator;
+            _user = user;
             _pedidoQueries = pedidoQueries;
         }
 
@@ -37,7 +37,7 @@ namespace NSE.Pedidos.API.Controllers
         {
             var pedido = await _pedidoQueries.ObterUltimoPedido(_user.ObterUserId());
 
-            return pedido != null ? NotFound() : CustomResponse(pedido);
+            return pedido == null ? NotFound() : CustomResponse(pedido);
         }
 
         [HttpGet("pedido/lista-cliente")]
@@ -45,7 +45,7 @@ namespace NSE.Pedidos.API.Controllers
         {
             var pedidos = await _pedidoQueries.ObterListaPorClienteId(_user.ObterUserId());
 
-            return pedidos != null ? NotFound() : CustomResponse(pedidos);
+            return pedidos == null ? NotFound() : CustomResponse(pedidos);
         }
     }
 }

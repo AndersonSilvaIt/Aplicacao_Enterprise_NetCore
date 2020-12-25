@@ -1,13 +1,11 @@
-﻿using NSE.Pedidos.Domain.Pedidos;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using NSE.Pedidos.Domain.Pedidos;
 
 namespace NSE.Pedidos.API.Application.DTO
 {
-	public class PedidoDTO
-	{
+    public class PedidoDTO
+    {
         public Guid Id { get; set; }
         public int Codigo { get; set; }
 

@@ -1,10 +1,10 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using System.Net;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using NSE.Pedidos.API.Application.DTO;
 using NSE.Pedidos.API.Application.Queries;
 using NSE.WebAPI.Core.Controllers;
-using System.Net;
-using System.Threading.Tasks;
 
 namespace NSE.Pedidos.API.Controllers
 {
@@ -18,10 +18,9 @@ namespace NSE.Pedidos.API.Controllers
             _voucherQueries = voucherQueries;
         }
 
-
         [HttpGet("voucher/{codigo}")]
         [ProducesResponseType(typeof(VoucherDTO), (int)HttpStatusCode.OK)]
-        [ProducesResponseType((int)HttpStatusCode.NotFound)] // Essa busca pode retornar dois tipos de respostas, ok ou NotFound
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
         public async Task<IActionResult> ObterPorCodigo(string codigo)
         {
             if (string.IsNullOrEmpty(codigo)) return NotFound();
@@ -30,6 +29,5 @@ namespace NSE.Pedidos.API.Controllers
 
             return voucher == null ? NotFound() : CustomResponse(voucher);
         }
-
     }
 }

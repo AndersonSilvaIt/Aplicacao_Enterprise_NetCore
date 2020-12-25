@@ -16,7 +16,7 @@
             "environmentVariables": {
                 "ASPNETCORE_ENVIRONMENT": "Development"
             },
-            "sqlDebuging": true,
+            "sqlDebugging": true,
             "nativeDebugging": true
         },
         "IIS - Staging": {

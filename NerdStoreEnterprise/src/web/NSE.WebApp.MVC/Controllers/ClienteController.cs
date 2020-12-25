@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace NSE.WebApp.MVC.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class ClienteController : MainController
     {
         private readonly IClienteService _clienteService;

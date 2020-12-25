@@ -1,25 +1,24 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using NSE.Pedidos.Domain.Pedidos;
-using System;
 
 namespace NSE.Pedidos.Infra.Data.Mappings
 {
-	public class PedidoItemMapping : IEntityTypeConfiguration<PedidoItem>
-	{
-		public void Configure(EntityTypeBuilder<PedidoItem> builder)
-		{
-			builder.HasKey(c => c.Id);
+    public class PedidoItemMapping : IEntityTypeConfiguration<PedidoItem>
+    {
+        public void Configure(EntityTypeBuilder<PedidoItem> builder)
+        {
+            builder.HasKey(c => c.Id);
 
-			builder.Property(c => c.ProdutoNome)
-				.IsRequired()
-				.HasColumnType("varchar(250)");
+            builder.Property(c => c.ProdutoNome)
+                .IsRequired()
+                .HasColumnType("varchar(250)");
 
-			// Rel. 1: N Pedido: Pedidos
-			builder.HasOne(c => c.Pedido)
-				.WithMany(c => c.PedidoItems);
+            // 1 : N => Pedido : Pagamento
+            builder.HasOne(c => c.Pedido)
+                .WithMany(c => c.PedidoItems);
 
-			builder.ToTable("PedidoItems");
-		}
-	}
+            builder.ToTable("PedidoItems");
+        }
+    }
 }
