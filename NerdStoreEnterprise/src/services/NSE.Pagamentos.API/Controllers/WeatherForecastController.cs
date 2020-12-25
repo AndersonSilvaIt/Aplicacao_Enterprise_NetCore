@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace NSE.Pagamento.API.Controllers
+namespace NSE.Pagamentos.API.Controllers
 {
 	[ApiController]
 	[Route("[controller]")]
