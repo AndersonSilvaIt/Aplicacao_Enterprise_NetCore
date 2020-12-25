@@ -2,3 +2,6 @@ Empresa paga pagamento Online: Pagar.me
 
 implementado o Gatware que irá simular o pagamento
 NSE.Pagamentos.NerdsPag
+
+
+Implementado as Models de Entidades para o banco.
