@@ -1,0 +1,6 @@
+PedidoOrquestradorIntegrationHandler
+irá ficar executando enquanto a aplicação estiver executando.
+
+outras bibliotecas para trabalhar com agendamento
+
+Hangfire
