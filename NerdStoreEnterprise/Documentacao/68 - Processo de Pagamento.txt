@@ -5,3 +5,7 @@ NSE.Pagamentos.NerdsPag
 
 
 Implementado as Models de Entidades para o banco.
+
+Add-Migration Pagamentos -StartupProject NSE.Pagamentos.API
+
+update-database -StartupProject NSE.Pagamentos.API
