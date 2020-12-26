@@ -1,3 +1,5 @@
 Implementado o BackGround Service, que irá ficar verificando a fila, para chamar os processos da Facade
 
 
+após realizar o pedido, é enviado uma mensagem para o estoque, verificando se o produto contém em estoque, caso existir, irá retirar do estoque.
+
