@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Dapper;
+using Microsoft.EntityFrameworkCore;
 using NSE.Catalogo.API.Models;
 using NSE.Core.Data;
 using System;
@@ -19,9 +20,34 @@ namespace NSE.Catalogo.API.Data.Repository
 
 		public IUnitOfWork UnitOfWork => _context;
 
-		public async Task<IEnumerable<Produto>> ObterTodos()
+		public async Task<PagedResult<Produto>> ObterTodos(int pageSize, int pageIndex, string query = null)
 		{
-			return await _context.Produtos.AsNoTracking().ToListAsync();
+			//return await _context.Produtos.AsNoTracking()
+			//	.Skip(pageSize * (pageIndex - 1)).Take(pageSize)// a query só usa se tiver algo preenchido nela
+			//	.Where(c => c.Nome.Contains(query)).ToListAsync();
+
+			var sql = @$"select * from produtos
+							where (@Nome IS NULL OR Nome LIKE '%' + @Nome + '%')
+							Order by BY [Nome]
+							OFFSET {pageSize * (pageIndex - 1)} ROWS
+							FETCH NEXT {pageSize} ROWS Only
+							Select count (id) from produtos where (@Nome IS NULL or Nome LIKE '%' +  @Nome + '%' )";
+			
+			var multi = await _context.Database.GetDbConnection()
+					.QueryMultipleAsync(sql, new { Nome = query });
+
+
+			var produtos = multi.Read<Produto>();
+			var total = multi.Read<int>().FirstOrDefault();
+
+			return new PagedResult<Produto>()
+			{
+				List = produtos,
+				TotalResults = total,
+				PageIndex = pageIndex,
+				PageSize = pageSize,
+				Query = query
+			};
 		}
 
 		public async Task<Produto> ObterPorId(Guid id)
