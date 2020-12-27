@@ -1,0 +1,1 @@
+Implementado a paginação no Repositório, usando o Dapper
