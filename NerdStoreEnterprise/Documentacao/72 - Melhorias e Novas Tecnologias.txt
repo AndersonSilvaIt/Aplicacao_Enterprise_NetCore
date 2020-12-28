@@ -1,1 +1,2 @@
 Implementado a paginação no Repositório, usando o Dapper
+Implementado a paginação no MVC e criado o ViewComponent genérico.

@@ -1,0 +1,16 @@
+instalado o pacote da API de identidade
+
+NetDevPack.Security.JwtSigningCredentials.Store.EntityFrameworkCore
+NetDevPack.Security.JwtSigningCredentials.AspNetCore
+
+
+criado uma nova tabela com base na classe SecurityKeyWithPrivate
+
+Add-Migration SecKeys -StartupProject NSE.Identidade.API
+
+na configuração do IdentityConfig, é implementado aconfiguração do JWKS
+a chave privada irá ser guardada no banco de dados, se atentar a isso, pode ser criado um banco a parte
+da aplicação para conter mais segurança.
+
+            services.AddJwksManager(options => options.Algorithm = Algorithm.ES256)
+                .PersistKeysToDatabaseStore<ApplicationDbContext>();

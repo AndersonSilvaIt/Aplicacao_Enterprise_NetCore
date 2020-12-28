@@ -43,6 +43,8 @@ namespace NSE.Identidade.API
             app.UseSwaggerConfiguration();
 
             app.UseApiConfiguration(env);
+
+
         }
     }
 }
