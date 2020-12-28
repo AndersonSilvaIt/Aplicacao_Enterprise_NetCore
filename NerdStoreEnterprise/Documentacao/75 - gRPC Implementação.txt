@@ -21,3 +21,17 @@ no caso o carrinho é o Server
 	<ItemGroup>
 		<Protobuf Include="Protos/carrinho.proto" GrpcServices="Server"/>
 	</ItemGroup>
+	
+quando compilar o projeto, será criado a classe "CarrinhoCompras.CarrinhoComprasBase" automaticamente
+
+após isso, é necessário criar a classe que irá realizar toda essa comunicação, no caso foi criado a CarrinhoGrpcService que implementa os métodos.
+
+necessário também, implementar as dependências no Startup
+
+  services.AddGrpc();
+  
+  app.UseEndpoints(endpoints =>
+     {
+         endpoints.MapControllers();
+         endpoints.MapGrpcService<CarrinhoGrpcService>().RequireCors("Total");
+     });  
