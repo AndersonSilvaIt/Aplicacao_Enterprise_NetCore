@@ -59,9 +59,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NSE.Pedidos.Infra", "src\se
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NSE.Pedidos.Domain", "src\services\NSE.Pedidos.Domain\NSE.Pedidos.Domain.csproj", "{3B8F9F75-5E0B-4F56-8789-2947F0114C12}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NSE.Pagamentos.API", "src\services\NSE.Pagamentos.API\NSE.Pagamentos.API.csproj", "{CE9142B2-DB3A-46C7-B31F-100701ABE13F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NSE.Pagamentos.API", "src\services\NSE.Pagamentos.API\NSE.Pagamentos.API.csproj", "{CE9142B2-DB3A-46C7-B31F-100701ABE13F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NSE.Pagamentos.NerdsPag", "src\services\NSE.Pagamentos.NerdsPag\NSE.Pagamentos.NerdsPag.csproj", "{F7B29BCA-A64C-4C30-BAB0-2B19DBF73D20}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NSE.Pagamentos.NerdsPag", "src\services\NSE.Pagamentos.NerdsPag\NSE.Pagamentos.NerdsPag.csproj", "{F7B29BCA-A64C-4C30-BAB0-2B19DBF73D20}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

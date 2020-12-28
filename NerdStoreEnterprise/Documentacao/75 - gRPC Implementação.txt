@@ -1,0 +1,23 @@
+irá ser implementado a comincação gRPC entre o carrinho e o BFF.
+
+no caso, o Carrinho será o "Serv"
+
+na API de carrinho (Servidor), necessário instalar o pacote do gRPC para o aspNet
+
+install-package Grpc.AspNetCore
+
+é necessário implementar um arquivo com extensão .proto
+
+Carrinho.proto
+
+
+após gerar o arquivo com as configurações necessárias, é necessário configurar o arquivo 
+csproj para ele expor o namespace do proto
+
+option csharp_namespace = "NSE.Carrinho.API.Services.gRPC";
+
+no caso o carrinho é o Server
+
+	<ItemGroup>
+		<Protobuf Include="Protos/carrinho.proto" GrpcServices="Server"/>
+	</ItemGroup>
