@@ -1,0 +1,3 @@
+o Token a cada hora é expirado, então caso alguma API detectar qu expirou, é realizado refresh e um novo token é gerado.
+
+criado o modelo para reaizar o  Refresh RefreshToken
