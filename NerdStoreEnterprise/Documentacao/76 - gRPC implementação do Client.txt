@@ -1,0 +1,39 @@
+o BFF será o Client do GRPC, irá consumir a API
+
+pacotes necessários 
+
+install-package google.protobuf -Version 3.12.4 -- interpreta o protobuf no lado do Client
+install-package grpc.net.clientfactory -Version 2.30.0 -- permite acessar o serviço externo da API (Server)
+ -- Usado para os Binds e serialização
+ 
+ Também é necessário apontar a configuração do ProtoBuf  no csproj do BFF (do client que irá utilizar)
+
+após realizar o Build, o projeto do BFF também terá acesso as classes
+ CarrinhoCompras.CarrinhoComprasClient
+ 
+agora é criado o arquivo de serviço que fará a comunicação
+
+CarrinhoGrpcService
+
+no startup, é necessário realizar a configuração do endpoint
+
+			services.AddScoped<ICarrinhoGrpcService, CarrinhoGrpcService>();
+
+			services.AddGrpcClient<CarrinhoCompras.CarrinhoComprasClient>(options =>
+			{
+				options.Address = new Uri(configuration["CarrinhoUrl"]);
+			}); 
+			
+		Implementado a injeção de dependência na controller que irá utilizar o serviço.
+
+criad o arquivo GrpcServiceInterceptor, para interceptar uma chamada do GRPC e implementar o usuário.		
+		necessário configurar essa classe no startup também
+		
+O IIS não tem suporte ao GRPC
+para isso, é necessário estar rodando em SelfHostinh
+basta setar cada projeto como StartupProject e no "Start", escolher a opção SelfHosting
+
+Projetos que precisam ser SelHosting
+
+BFF Compras
+Carrinho

@@ -35,7 +35,6 @@ namespace NSE.BFF.Compras
 			services.AddJwtConfiguration(Configuration);
 
 			services.AddSwaggerConfiguration();
-
 			services.RegisterServices();
 
 			services.AddMessageBusConfiguration(Configuration);

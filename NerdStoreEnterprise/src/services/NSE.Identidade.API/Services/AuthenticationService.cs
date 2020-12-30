@@ -123,11 +123,11 @@ namespace NSE.Identidade.API.Services
         {
             var refreshToken = new RefreshToken
             {
-                UserName = email,
+                Username = email,
                 ExpirationDate = DateTime.UtcNow.AddHours(_appTokenSettingsSettings.RefreshTokenExpiration)
             };
 
-            _context.RefreshTokens.RemoveRange(_context.RefreshTokens.Where(u => u.UserName == email));
+            _context.RefreshTokens.RemoveRange(_context.RefreshTokens.Where(u => u.Username == email));
             await _context.RefreshTokens.AddAsync(refreshToken);
 
             await _context.SaveChangesAsync();

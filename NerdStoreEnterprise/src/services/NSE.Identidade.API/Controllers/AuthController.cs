@@ -117,7 +117,7 @@ namespace NSE.Identidade.API.Controllers
                 return CustomResponse();
             }
 
-            return CustomResponse(await _authenticationService.GerarJwt(token.UserName));
+            return CustomResponse(await _authenticationService.GerarJwt(token.Username));
         }
     }
 }

@@ -1,0 +1,22 @@
+necessário instalação do Pacote gRPC.Core.API
+na aplicação Web.
+
+install-package gRPC.Core.API
+
+
+No tratamento do Middleware Exception, implementado mais um catch
+
+            catch(RpcException ex)
+            {
+                var statusCode = ex.StatusCode switch
+                {
+                    StatusCode.Internal => 400,
+                    StatusCode.Unauthenticated => 401,
+                    StatusCode.PermissionDenied => 403,
+                    StatusCode.Unimplemented => 404,
+                    _ => 500
+                };
+
+                var httpStatusCode = (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), statusCode.ToString());
+                HandleRequestExceptionAsync(httpContext, httpStatusCode);
+            }

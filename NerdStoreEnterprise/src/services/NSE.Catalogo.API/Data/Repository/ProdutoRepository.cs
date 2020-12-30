@@ -28,7 +28,7 @@ namespace NSE.Catalogo.API.Data.Repository
 
 			var sql = @$"select * from produtos
 							where (@Nome IS NULL OR Nome LIKE '%' + @Nome + '%')
-							Order by BY [Nome]
+							Order by [Nome]
 							OFFSET {pageSize * (pageIndex - 1)} ROWS
 							FETCH NEXT {pageSize} ROWS Only
 							Select count (id) from produtos where (@Nome IS NULL or Nome LIKE '%' +  @Nome + '%' )";

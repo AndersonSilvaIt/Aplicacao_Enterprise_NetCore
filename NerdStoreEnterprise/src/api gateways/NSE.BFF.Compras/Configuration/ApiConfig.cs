@@ -26,6 +26,8 @@ namespace NSE.BFF.Compras.Configuration
 							.AllowAnyMethod()
 							.AllowAnyHeader());
 			});
+
+			services.ConfigureGrpcServices(configuration);
 		}
 
 		public static void UseApiConfiguration(this IApplicationBuilder app, IWebHostEnvironment env)

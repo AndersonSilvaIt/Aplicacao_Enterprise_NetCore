@@ -14,6 +14,7 @@ namespace NSE.Identidade.API.Configuration
         public static IServiceCollection AddApiConfiguration(this IServiceCollection services)
         {
             services.AddControllers();
+
             services.AddScoped<AuthenticationService>();
             services.AddScoped<IAspNetUser, AspNetUser>();
 
