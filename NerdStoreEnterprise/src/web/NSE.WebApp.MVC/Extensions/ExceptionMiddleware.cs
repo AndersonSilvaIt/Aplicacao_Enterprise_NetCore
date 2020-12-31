@@ -43,8 +43,13 @@ namespace NSE.WebApp.MVC.Extensions
             {
                 HandleCircuitBreakerExceptionAsync(httpContext);
             }
-            catch(RpcException ex)
+            catch (RpcException ex)
             {
+                //400 Bad Request	    INTERNAL
+                //401 Unauthorized      UNAUTHENTICATED
+                //403 Forbidden         PERMISSION_DENIED
+                //404 Not Found         UNIMPLEMENTED
+
                 var statusCode = ex.StatusCode switch
                 {
                     StatusCode.Internal => 400,
@@ -55,6 +60,7 @@ namespace NSE.WebApp.MVC.Extensions
                 };
 
                 var httpStatusCode = (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), statusCode.ToString());
+
                 HandleRequestExceptionAsync(httpContext, httpStatusCode);
             }
         }
@@ -63,7 +69,6 @@ namespace NSE.WebApp.MVC.Extensions
         {
             if (statusCode == HttpStatusCode.Unauthorized)
             {
-                //Token expirado, irá tentar renovar o Token usando o Refresh
                 if (_autenticacaoService.TokenExpirado())
                 {
                     if (_autenticacaoService.RefreshTokenValido().Result)
@@ -72,7 +77,7 @@ namespace NSE.WebApp.MVC.Extensions
                         return;
                     }
                 }
-                // caso não conseguir realizar o Refresh, irá realizar o logout na aplicação
+
                 _autenticacaoService.Logout();
                 context.Response.Redirect($"/login?ReturnUrl={context.Request.Path}");
                 return;

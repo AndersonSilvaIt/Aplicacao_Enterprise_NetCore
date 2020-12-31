@@ -48,7 +48,7 @@ namespace NSE.WebApp.MVC.Configuration
                 SupportedUICultures = supportedCultures
             });
 
-            //app.UseMiddleware<ExceptionMiddleware>();
+           app.UseMiddleware<ExceptionMiddleware>();
 
             app.UseEndpoints(endpoints =>
             {
