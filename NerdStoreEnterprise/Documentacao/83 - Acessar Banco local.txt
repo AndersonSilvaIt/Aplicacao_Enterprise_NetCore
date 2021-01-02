@@ -1,0 +1,31 @@
+Para configurar o SQL Server Local, para acesso externo:
+
+Na minha máquina Win10, eu tinha que fazer: Clique com o botão direito do mouse no ícone do Windows -> 
+Painel de controle -> Sistema e segurança -> Ferramentas administrativas -> Gerenciamento de computadores -> 
+Gerenciador de configuração do SQL Server
+
+Expandir: Serviços e aplicativos
+
+SQL Server Configuration Manager -> SQL Server Network Configuration -> escolher a instância do SQL
+
+TCP/IP -> Enable = true
+Aba "IP Adress": procurar por IPALL -> TCP Port (escolher a porta de acesso externo), no caso 1444
+
+agora para acessar o meu sql express de fora, basta informar o IP de onde está instalado,
+a instância e a porta configurada
+
+192.168.0.101\SQLEXPRESS01,1444
+
+também é preciso liberar a porta no firewall
+
+também existe uma configuração do SQL Express
+em conex~~ao, permitir outros IPs de fora para acessar
+
+Acessar Firewall segurança avançada Nova Regra....
+
+"DefaultConnection": "Data Source=host.docker.internal\\SQLEXPRESS01,1444;Database=NerdStoreEntrepriseDb02;MultipleActiveResultSets=true;User Id=sa;Password=abc@123"
+a conection string ficará assim, como o docker está rodando na mesma máquina, então ele conseguirá onbter o próprio IP
+host.docker.internal = obtém o próprio IP, mesmo se a máquina ficar com IP dinâmino, não tem problema, pois o docker sempre irá estar no mesmo
+IP do sql local.
+
+basta rodar novamente o Build.

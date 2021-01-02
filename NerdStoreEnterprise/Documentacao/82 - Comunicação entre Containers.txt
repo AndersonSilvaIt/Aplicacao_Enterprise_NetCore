@@ -1,0 +1,46 @@
+abrir o arquivo do docker compose para configurar as outras APIS
+
+Em ambos projetos, foi duplicado o arquivo de de appsettings.json, para o 
+appsettings.Production.json
+
+ajustado também o arquivo de dockerfile
+apontando para as dependências do projeto, core, messagebus e etc...
+
+Obs: no projeto MVC, a URL do catalogo é   "CatalogoUrl": "https://localhost:5301",
+porém quando subir o docker, não poderá ser esse caminho, pois localhost será somente o container do mvc,
+a API está em outro container.
+
+para resolver isso, para implementar 
+"CatalogoUrl": "http://nerdstore-api-catalogo:5301",
+
+ou seja, o nome do container da API + a porta
+container_name: nerdstore-api-catalogo
+
+Obs: retirar o https: http
+
+posteriormente, irá configurar para trabalhar com https
+
+agora rodar novamente o comando 
+comando: docker-compose -f nerdstore_producao.yml up
+
+como o projeto MVC já estava em cache, apontamento para localhost:5301, é preciso realizar o build novamente
+
+comando: docker-compose -f nerdstore_producao.yml up --build
+
+por hora também não funcionou, pois a API de catálogo usa filas do EasyNetQ, então precisa subir o container da mensageria também.
+
+implementado no arquivo yml a configuração do RabbitMQ
+
+a ordem que irá gerar os containers no arquivo yml, é conforme a configuração "depends"
+no caso, o projeto mvc depende da api de catalogo primeiro, então a api irá subir inicialmente
+
+e a api de catálogo, depende do RaabitMQ
+
+também é necessário trocar a string de conexão com o RabbitMQ no projeto de appsettings.Production de catalogo
+"MessageBus": "host=rabbit-nerdstore:5672;publisherConfirms=true;timeout=30;username=nerdstore;password=nerdstore"
+
+agora necessário rodar build novamente
+
+comando: docker-compose -f nerdstore_producao.yml up --build
+ainda não irá  rodar, pois precisa de acesso ao banco de dados.
+Próximo Doc

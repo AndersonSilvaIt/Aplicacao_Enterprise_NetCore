@@ -1,0 +1,43 @@
+na pasta raiz, onde está o "src", "sql", e etc, é criado mais uma pasta "docker"
+
+dentro de "docker", criado o arquivo "nerdstore_producao.yml"
+
+version: "3"
+
+services: 
+    
+    web-mvc:
+        image: desenvolvedorio/nerdstore-web-mvc-ecommerce:latest
+        container_name: nerdstore-web-mvc-ecommerce
+        build:
+            context: ../src
+            dockerfile: ./web/NSE.Webapp.MVC/Dockerfile
+        ports:
+            "5001:5001"
+        environment:
+            - ASPNETCORE_ENVIRONMENT=Production 
+            - ASPNETCORE_URLS=http://*:5001
+
+após criar o arquivo de configuração, via linha de comando
+
+entrar na pasta aonde está o arquivo, cd docker
+comando: docker-compose -f nerdstore_producao.yml up
+-f = file
+
+
+como gerou alguns erros, as portas precisam estar em formato de array
+
+o array no docker-compose é especificado conforme a seguir
+            - "5001:5001"
+            - "5003:5003"
+			por ifens em cada linha
+			
+no arquivo de dockerFile do projeto, é preciso ajustar o caminho também
+
+COPY ["./web/NSE.WebApp.MVC/NSE.WebApp.MVC.csproj", "web/NSE.WebApp.MVC/"]	
+
+apos ajustar, rodar o comando novamente
+
+comando: docker-compose -f nerdstore_producao.yml up
+
+	

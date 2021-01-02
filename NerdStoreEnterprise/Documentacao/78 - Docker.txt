@@ -1,0 +1,9 @@
+Iniciar o docker na máquina,
+
+criar o volume para o portainer
+
+docker create volume portainer_data
+
+docker run -d -p 8000:8000 -p 3040:3040 --name=portainer  --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer
+
+ao acessar o localhost:3040 irá acessar a tela do portainer.

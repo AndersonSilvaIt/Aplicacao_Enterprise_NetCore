@@ -1,0 +1,58 @@
+#See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
+
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-buster-slim AS base
+WORKDIR /app
+EXPOSE 80
+EXPOSE 443
+
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
+WORKDIR /src
+COPY ["src/web/NSE.WebApp.MVC/NSE.WebApp.MVC.csproj", "src/web/NSE.WebApp.MVC/"]
+RUN dotnet restore "src/web/NSE.WebApp.MVC/NSE.WebApp.MVC.csproj"
+COPY . .
+WORKDIR "/src/src/web/NSE.WebApp.MVC"
+RUN dotnet build "NSE.WebApp.MVC.csproj" -c Release -o /app/build
+
+FROM build AS publish
+RUN dotnet publish "NSE.WebApp.MVC.csproj" -c Release -o /app/publish
+
+FROM base AS final
+WORKDIR /app
+COPY --from=publish /app/publish .
+ENTRYPOINT ["dotnet", "NSE.WebApp.MVC.dll"]
+
+
+o arquivo Dockerfile está no mesmo nível do projeto csproj, porém existe uma limitação, o dockerfile não pode navegar em pastas acima de
+onde ele está, somente abaixo
+
+primeiro, pelo cmd, navegar até a pasta onde está o dockerfile
+
+no meu caso atual:
+cd Z:\NetCore_EnterpriseAplication\Aplicacao_Enterprise_NetCore\NerdStoreEnterprise\src\web\NSE.WebApp.MVC
+
+para compilar o dockerfile: docker build . (o ponto é para indicar o diretório atual onde o dockerfile se ecnontra)
+
+
+erro em uma concatenação, basta trocar o caminho que indica o arquivo csproj
+
+COPY ["src/web/NSE.WebApp.MVC/NSE.WebApp.MVC.csproj", "src/web/NSE.WebApp.MVC/"]
+para esse
+COPY ["NSE.WebApp.MVC.csproj", "src/web/NSE.WebApp.MVC/"]
+
+
+no arquivo de csproj, o contexto está informando para ser executando em trÊs níveis acima  (..\..\..)
+então, basta voltar três níveis, aonde será mostrado a pasta "src"
+cd .. cd.. cd..
+
+Diretório que irá mostrar no cmd
+Z:\NetCore_EnterpriseAplication\Aplicacao_Enterprise_NetCore\NerdStoreEnterprise>
+
+agora, basta executar o build do dockerfile
+docker build .\src\web\NSE.WebApp.MVC
+, como esse projeto depende de outras bibliotecas, é necessário passar o caminho dessas dependências também.
+
+COPY ["NSE.WebApp.MVC.csproj", "src/web/NSE.WebApp.MVC/"]
+COPY ["src/building blocks/NSE.Core/NSE.Core.csproj", "building blocks/NSE.WebAPI.Core/"]
+
+como será necessário modificar vários arquivos docker_file, então é existe a possibilidade de alterar em uma vez só,usando o docker compose
+

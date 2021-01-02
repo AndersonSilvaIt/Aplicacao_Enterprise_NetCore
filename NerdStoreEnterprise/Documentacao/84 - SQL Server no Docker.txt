@@ -1,0 +1,1 @@
+nas isntruções do docker compose, é criado mais uma configuração, agora para o sql no docker
