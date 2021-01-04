@@ -1,1 +1,27 @@
 nas isntruções do docker compose, é criado mais uma configuração, agora para o sql no docker
+
+criado o arquivo Dockerfile, na pasta sql, que irá configurar o container do SQL, de onde virá a imagem e etc.
+
+criado o arquivo de script para criação de banco e tabelas.
+criado os shell_scripts para criar o banco no linux. arquivos .sh
+
+entrypoint.sh
+import-data.sh
+
+como o Dockerfile está sendo executado na pasta sql, ele irá copiar todos os arquivos para dentro do container.
+
+os arquivos .sh e etc
+
+
+
+Obs: arquivos .sh, quando forem abertos no VSCODE, no rodapé a configuração precisa estar como "LF" e não "CRLS"
+
+agora, basta rodar o build novamente
+
+após criar as tabelas, e subir o container do SQL Server, agora precisa mudar o arquivo de configuração da API de catálogo,
+apontando para o sql do docker
+
+"DefaultConnection": "Data Source=sql-server;Database=NerdStoreEntrepriseDb02;MultipleActiveResultSets=true;User Id=sa;Password=abcd@1234"
+basta trocar somente o Data Source para sql-server
+que é o nome do serviço do container sql que está configurado no arquivo yml
+
