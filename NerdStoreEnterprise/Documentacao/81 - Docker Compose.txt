@@ -1,3 +1,4 @@
+
 na pasta raiz, onde está o "src", "sql", e etc, é criado mais uma pasta "docker"
 
 dentro de "docker", criado o arquivo "nerdstore_producao.yml"

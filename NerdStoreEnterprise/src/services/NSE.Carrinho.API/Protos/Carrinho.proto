@@ -5,21 +5,16 @@ option csharp_namespace = "NSE.Carrinho.API.Services.gRPC";
 package CarrinhoAPI;
 
 service CarrinhoCompras {
-	// nome do método
-	//se precisar criar mais um método, cria na linha debaixo desse
-	//rpc ObterCarrinho2 por exemplo
-	rpc ObterCarrinho(ObterCarrinhoRequest) returns (CarrinhoClienteResponse) {}
+	rpc ObterCarrinho(ObterCarrinhoRequest) returns (CarrinhoClienteResponse) {}	
 }
 
 message ObterCarrinhoRequest {
 
 }
 
-// os números, são as ordens numéricas
-message CarrinhoClienteResponse {	 
-
+message CarrinhoClienteResponse {
 	string id = 1;
-	string clienteid = 2;
+	string clienteid  = 2;
 	double valortotal = 3;
 	repeated CarrinhoItemResponse itens = 4;
 	bool voucherutilizado = 5;
@@ -30,10 +25,10 @@ message CarrinhoClienteResponse {
 message CarrinhoItemResponse {
 	string id = 1;
 	string produtoid = 2;
-	string nome = 3;
-	int32 quantidade= 4;
-	double valor = 5;
-	string imagem = 6;
+	string nome  = 3;
+	int32 quantidade = 4;
+	double valor  = 5;
+	string imagem  = 6;
 }
 
 message VoucherResponse {

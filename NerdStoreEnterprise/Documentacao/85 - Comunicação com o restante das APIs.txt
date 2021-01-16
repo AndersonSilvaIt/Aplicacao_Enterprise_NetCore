@@ -1,0 +1,6 @@
+no arquivo de docker compose (yml), é implementado as configurações das outras APIs
+
+alterado também as configurações necessárias dos projetos
+
+Um dos erros ao compilar o projeto BFF qu referencia o arquivo proto de Carrinho, o arquivo no projeto está com a 
+inicial maiúscula, Carrinho.proto, e no crproj de BFF estava com letra minuscula.

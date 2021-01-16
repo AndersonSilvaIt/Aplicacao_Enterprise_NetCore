@@ -1,6 +1,7 @@
 ﻿using System.Globalization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,22 +16,30 @@ namespace NSE.WebApp.MVC.Configuration
         {
             services.AddControllersWithViews();
 
+            services.Configure<ForwardedHeadersOptions>(options =>
+            {
+                options.ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
+            });
+
             services.Configure<AppSettings>(configuration);
         }
 
         public static void UseMvcConfiguration(this IApplicationBuilder app, IWebHostEnvironment env)
         {
+            // necessário ficar sempre na primeira linha desse método.
+            app.UseForwardedHeaders();
+
             //if (env.IsDevelopment())
             //{
-                app.UseDeveloperExceptionPage();
+            //    app.UseDeveloperExceptionPage();
             //}
             //else
             //{
             //
             //}
 
-            //app.UseExceptionHandler("/erro/500");
-            //app.UseStatusCodePagesWithRedirects("/erro/{0}");
+            app.UseExceptionHandler("/erro/500");
+            app.UseStatusCodePagesWithRedirects("/erro/{0}");
             app.UseHsts();
 
             app.UseHttpsRedirection();

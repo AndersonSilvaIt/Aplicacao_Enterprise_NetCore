@@ -1,0 +1,8 @@
+o GRPC se comunica somente com protocolo HTTPS.
+
+no arquivo o docker-compose, implementado a configuração para utilizar o nginx
+
+não será obrigatório digitar o https no browser, na configuração do nginx,
+quando bater na porta 80, ele irá redirecionar para a porta 443 (porta segura)
+            - "80:80"
+            - "443:443"

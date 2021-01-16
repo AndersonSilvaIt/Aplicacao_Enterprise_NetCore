@@ -26,7 +26,7 @@
   </ItemGroup>
 
 	<ItemGroup>
-		<Protobuf Include="..\..\services\NSE.Carrinho.API\Protos\carrinho.proto" GrpcServices="Client" />
+		<Protobuf Include="..\..\services\NSE.Carrinho.API\Protos\Carrinho.proto" GrpcServices="Client" />
 	</ItemGroup>
 	
 </Project>
